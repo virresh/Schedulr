@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField alignment="CENTER" disable="true" editable="false" text="Login into Schedulr">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <effect>
+            <Glow />
+         </effect>
+      </TextField>
+      <TextField id="Tf_Username" alignment="CENTER" opacity="0.66" promptText="Username">
+         <VBox.margin>
+            <Insets left="200.0" right="200.0" top="100.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TextField>
+      <PasswordField promptText="Password">
+         <VBox.margin>
+            <Insets left="200.0" right="200.0" top="10.0" />
+         </VBox.margin>
+      </PasswordField>
+      <TextField alignment="CENTER_RIGHT" disable="true" editable="false" text="New User? Sign up.">
+         <VBox.margin>
+            <Insets left="230.0" right="230.0" top="50.0" />
+         </VBox.margin>
+      </TextField>
+   </children>
+</VBox>

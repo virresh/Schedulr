@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField alignment="CENTER" text="Sign Up" />
+      <TextField alignment="CENTER" promptText="First Name">
+         <VBox.margin>
+            <Insets left="100.0" right="100.0" top="70.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField alignment="CENTER" promptText="Last Name">
+         <VBox.margin>
+            <Insets left="100.0" right="100.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField alignment="CENTER" promptText="Username">
+         <VBox.margin>
+            <Insets left="100.0" right="100.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <PasswordField alignment="CENTER" promptText="Password">
+         <VBox.margin>
+            <Insets left="100.0" right="100.0" top="10.0" />
+         </VBox.margin>
+      </PasswordField>
+      <ComboBox id="CB_User_Type" prefWidth="150.0" promptText="Select User Type">
+         <VBox.margin>
+            <Insets left="215.0" top="10.0" />
+         </VBox.margin>
+      </ComboBox>
+      <Button mnemonicParsing="false" text="Submit">
+         <VBox.margin>
+            <Insets left="270.0" right="200.0" top="45.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

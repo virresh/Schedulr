@@ -12,7 +12,7 @@
    <top>
       <VBox prefHeight="164.0" prefWidth="382.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField text="User email" />
+            <TextField text="UserName" />
             <PasswordField text="Password" />
             <HBox alignment="TOP_CENTER">
                <children>

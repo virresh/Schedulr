@@ -2,26 +2,29 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextField alignment="CENTER" disable="true" editable="false" text="Student Login" />
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox fx:id="VB_Holder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="28.0" prefWidth="600.0">
+            <TextField alignment="CENTER" disable="true" editable="false" text="Admin Login" />
+            <HBox fx:id="L_Greet" prefHeight="28.0" prefWidth="600.0">
                <children>
-                  <TextField id="TF_WelcomeUser" editable="false" prefHeight="27.0" prefWidth="233.0" text=" Welcome, ">
+                  <Label fx:id="greet" text="Welcome">
                      <HBox.margin>
-                        <Insets left="5.0" right="285.0" />
+                        <Insets left="5.0" right="400.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets right="50.0" />
-                     </padding>
-                  </TextField>
-                  <Button id="Bt_Logout" mnemonicParsing="false" opacity="0.6" prefHeight="27.0" prefWidth="76.0" text="Logout">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Button id="Bt_Logout" fx:id="Bt_Logout" mnemonicParsing="false" opacity="0.6" prefHeight="27.0" prefWidth="76.0" text="Logout">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -33,17 +36,17 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="99.0" prefWidth="171.0" text="View Room Bookings">
+                  <Button fx:id="Bt_ViewBooking" mnemonicParsing="false" onAction="#f_viewBookings" prefHeight="99.0" prefWidth="171.0" text="View Room Bookings">
                      <padding>
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="165.0" text="View Time Table">
+                  <Button fx:id="Bt_ViewTimeTable" mnemonicParsing="false" onAction="#f_viewTimeTable" prefHeight="100.0" prefWidth="165.0" text="View Time Table">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="135.0" text="Book a Room">
+                  <Button fx:id="Bt_CancelBooking" mnemonicParsing="false" onAction="#f_cancelBooking" prefHeight="100.0" prefWidth="156.0" text="Cancel a Booking">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -58,17 +61,14 @@
             </HBox>
             <HBox prefHeight="158.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="112.0" prefWidth="172.0" text="Cancel a Room">
+                  <Button fx:id="Bt_BookRoom" mnemonicParsing="false" onAction="#f_bookRoom" prefHeight="112.0" prefWidth="172.0" text="Book a Room">
                      <HBox.margin>
                         <Insets left="100.0" top="25.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="113.0" prefWidth="171.0" text="View Courses">
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
+                  <Button fx:id="Bt_RespondToReq" mnemonicParsing="false" onAction="#f_respondToRequests" prefHeight="113.0" prefWidth="175.0" text="Respond to Requests">
                      <HBox.margin>
-                        <Insets left="65.0" top="25.0" />
+                        <Insets left="50.0" top="25.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -78,5 +78,5 @@
             </HBox>
          </children>
       </VBox>
-   </children>
-</VBox>
+   </center>
+</BorderPane>

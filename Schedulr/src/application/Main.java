@@ -12,16 +12,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-//			BorderPane root = new BorderPane();
-//			Scene scene = new Scene(root,400,400);
-//			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-//			primaryStage.setScene(scene);
-//			primaryStage.show();
-			Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-
-			Scene scene = new Scene(root, 300, 275);
-
-			primaryStage.setTitle("FXML Welcome");
+			Parent root = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Schedulr");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

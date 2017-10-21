@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField alignment="CENTER" disable="true" editable="false" text="Schedulr" />
+      <TextField alignment="CENTER" disable="true" editable="false" text="Admin Login" />
       <HBox prefHeight="28.0" prefWidth="600.0">
          <children>
             <TextField id="TF_WelcomeUser" editable="false" prefHeight="27.0" prefWidth="233.0" text=" Welcome, ">

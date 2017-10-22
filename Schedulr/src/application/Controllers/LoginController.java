@@ -1,10 +1,15 @@
 package application.Controllers;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
@@ -13,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class LoginController {
 	@FXML
@@ -37,6 +43,23 @@ public class LoginController {
 		}
 		else if(Tx_Uname.getText().equals("student@iiitd.ac.in") && Tx_Passwd.getText().equals("pass")) {
 			L_Status.setText("Student Login :)");
+			Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		    // OR
+		    Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
+		    // these two of them return the same stage
+		    // Swap screen
+		    Parent root=null;
+			try {
+				root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+//				System.out.println("NULL         ---");
+				e.printStackTrace();
+			}
+			if(root==null) {
+				System.out.println("NULL         +++");
+			}
+		    stageTheLabelBelongs.setScene(new Scene(root));
 		}
 		else if(Tx_Uname.getText().equals("faculty@iiitd.ac.in") && Tx_Passwd.getText().equals("pass")) {
 			L_Status.setText("Faculty Login :)");

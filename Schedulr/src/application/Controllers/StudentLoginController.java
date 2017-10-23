@@ -46,7 +46,7 @@ public class StudentLoginController implements Initializable{
 		Parent root=null;
 		try 
 		{
-			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewRoomBookings.fxml"));
+			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewRoomBookings_Student.fxml"));
 		} 
 		catch (IOException e) 
 		{
@@ -63,7 +63,7 @@ public class StudentLoginController implements Initializable{
 		Parent root=null;
 		try 
 		{
-			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewTimeTable.fxml"));
+			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewTimeTable_Student.fxml"));
 		} 
 		catch (IOException e) 
 		{
@@ -80,7 +80,7 @@ public class StudentLoginController implements Initializable{
 		Parent root=null;
 		try 
 		{
-			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/BookaRoom_Student.fxml"));
+			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/BookARoom_Student.fxml"));
 		} 
 		catch (IOException e) 
 		{

@@ -11,51 +11,52 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <HBox>
          <children>
+            <Button fx:id="Bt_back" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="607.0" text="View Courses">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <HBox prefHeight="28.0" prefWidth="600.0">
-               <children>
-                  <TextField fx:id="Tf_search" promptText="Search">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button fx:id="Bt_Search" mnemonicParsing="false" onAction="#f_search" prefHeight="26.0" prefWidth="65.0" text="Search">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <ComboBox fx:id="CB_criterion" prefHeight="26.0" prefWidth="139.0" promptText="Criterion">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </ComboBox>
-                  <Button id="Bt_Logout" fx:id="Bt_logout" mnemonicParsing="false" onAction="#f_logout" prefHeight="27.0" prefWidth="76.0" text="Logout">
-                     <HBox.margin>
-                        <Insets left="100.0" right="5.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <ListView prefHeight="269.0" prefWidth="570.0">
-               <VBox.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </VBox.margin>
-            </ListView>
-            <Button fx:id="Bt_register" disable="true" mnemonicParsing="false" onAction="#f_register" text="Register for the selected Course">
-               <VBox.margin>
-                  <Insets left="15.0" />
-               </VBox.margin>
+         </children>
+      </HBox>
+      <HBox prefHeight="28.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="Tf_search" promptText="Search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="Bt_Search" mnemonicParsing="false" onAction="#f_search" prefHeight="26.0" prefWidth="65.0" text="Search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <ComboBox fx:id="CB_criterion" prefHeight="26.0" prefWidth="139.0" promptText="Criterion">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Button id="Bt_Logout" fx:id="Bt_logout" mnemonicParsing="false" onAction="#f_logout" prefHeight="27.0" prefWidth="76.0" text="Logout">
+               <HBox.margin>
+                  <Insets left="100.0" right="5.0" />
+               </HBox.margin>
             </Button>
          </children>
-      </VBox>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <ListView prefHeight="269.0" prefWidth="570.0">
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </ListView>
+      <Button fx:id="Bt_register" disable="true" mnemonicParsing="false" onAction="#f_register" text="Register for the selected Course">
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

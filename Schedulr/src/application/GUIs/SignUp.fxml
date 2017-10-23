@@ -6,15 +6,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefHeight="26.0" prefWidth="636.0" text="Sign Up">
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </Label>
+      <HBox>
+         <children>
+            <Button fx:id="Bt_back" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="636.0" text="Sign Up">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
       <TextField fx:id="Tx_fName" alignment="CENTER" promptText="First Name">
          <VBox.margin>
             <Insets left="100.0" right="100.0" top="70.0" />

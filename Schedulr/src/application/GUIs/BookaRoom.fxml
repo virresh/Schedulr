@@ -22,7 +22,7 @@
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </VBox.margin></ListView>
-      <Button fx:id="Bt_Book" mnemonicParsing="false" onAction="#f_Book" text="Save Changes">
+      <Button fx:id="Bt_Book" mnemonicParsing="false" onAction="#f_Book" text="Book Room">
          <VBox.margin>
             <Insets bottom="10.0" left="480.0" top="120.0" />
          </VBox.margin>

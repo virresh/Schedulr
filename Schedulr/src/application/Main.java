@@ -1,5 +1,9 @@
 package application;
 	
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+import database.TimeTable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,10 +23,17 @@ public class Main extends Application {
 	 * Start method will simply be responsible for starting the main GUI
 	 */
 	
+	public static TimeTable tt;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
+			
+			ObjectInputStream I = new ObjectInputStream(new FileInputStream("./src/database/timeTable.dat"));
+			tt = (TimeTable)I.readObject();
+			I.close();
+//			Parent root = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../application/GUIs/ViewTimeTable_Student.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Schedulr");
 			primaryStage.setScene(scene);

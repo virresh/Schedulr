@@ -3,39 +3,39 @@ Mandatory,Discrete Mathematics,CSE121,Dhongoon Chang,4,DM,-,13:30-15:00$C21,-,-,
 be able to recognize and/or construct examples of mathematical objects introduced during the course, such as the sets and functions.
 have been introduced to several mathematical models, (e.g. propositional logic, trees) including some of those underlying computing and information technology
 have had the opportunity to develop capacity in knowing what constitutes a valid argument, and in constructing valid arguments/proofs
-have had an opportunity to develop the problem-solving skills",Wednesday $4:00-5:30$S01 : Friday $4:00-5:30$LR1;LR2;LR3 :,
+have had an opportunity to develop the problem-solving skills",Wednesday$16:00-17:30$S01@Friday$16:00-17:30$LR1;LR2;LR3 @,
 Mandatory ,Advanced Programming,CSE201,Vivek Kumar,4,AP,11:00-12:00$C21,-,11:00-12:00$C21,11:00-12:00$C21,-,"Introduction to Programming (CSE101)
 Data Structures & Algorithms (CSE102)","Students are able to demonstrate the knowledge of basic principles of Object Oriented Programming such as encapsulation (classes and objects), interfaces, polymorphism and inheritance; by implementing programs ranging over few hundreds lines of code.
 Implement basic event driven programming, exception handling, and threading. 
 Students are able to analyze the problem in terms of use cases and create object oriented design for it. Students are able to present the design in UML.
 Students are able to select and use a few key design pattern to solve a given problem in hand.
-Students are able to use common tools for testing (e.g., JUnit), debugging, and source code control as an integral part of program development.",Monday  $12:00-1:00$LR1;LR2;S01;S02 :,Thursday : $12:00-1:00$L21;L22;L23
+Students are able to use common tools for testing (e.g., JUnit), debugging, and source code control as an integral part of program development.",Monday$12:00-13:00$LR1;LR2;S01;S02@,Thursday$12:00-13:00$L21;L22;L23@
 Mandatory ,Computer Organization,CSE112,Naveen Prakash(G),4,CO ,-,-,14:30-16:00$C21,16:00-17:30$C01,-,"Introduction to Programming (CSE101)
 Digital Circuits(CSE111)","Write program in assembly language(RISC ISA) - Compare performance between several implementations of a computer program.
 Analyse processor performance for different implementation strategies : eg. single vs. multicycle,pipelined vs. non-pipelined execution.
 Simulate and compare performance of cache memory,compare caches with different configuration.
-Analyse basic I/O operation and their performance.",Wednesday  $1:30-2:30$LR2;LR3;C22;C23 :,
+Analyse basic I/O operation and their performance.",Wednesday$13:30-14:30$LR2;LR3;C22;C23@,
 Elective,Math-III,MTH203,Sarthok Sircar,4,M-III,-,15:00-16:00$C21,-,15:00-16:00$C21,15:00-16:00$C21,,"Students are able to apply concepts of continuity, differentiability, extrema and integrability of multivariable functions and evaluate various integrals (line, double, triple and surface integrals).Students are able to work with vector fields, evaluate line
 and surface integrals, calculate quantities such as work,circulation and flux across plane curves and surfaces, be able to carry out vector derivative operations such as gradient, divergence and curl and understand and apply Green's, Stoke's and divergence  theorems.Students are able to evaluate
 derivatives and integrals of complex functions, including the applications of Cauchy’s theorem.Students are able to determine convergence of complex series and power series and understand and apply Taylor series to represent complex
 functions.
-",Monday $8:30-10:00$LR1$1:30-3:00$LR1 :,
+",Monday$8:30-10:00$LR1$13:30-15:00$LR1@,
 Elective,Signal & Systems,ECE250,Anubha Gupta,4,S&S,-,11:00-12:00$C21,-,14:00-15:00$C21,14:00-15:00$C21,MTH100 Maths I,"Students are able to classify basic signal representation; continuous time and discrete-time signals
 Students are able to determine the response of an LTI system to continuous-time or discrete-time input signals.
 Students are able to represent both continuous-time and discrete-time periodic signals as Fourier series.
  Students are able to analyze continuous-time signals and systems using Fourier transform and Laplace transform.
-Students are able to analyze discrete-time signals and systems using discrete-time Fourier transform and Z-transform.",Monday $2:00-3:00$LR3 :,
+Students are able to analyze discrete-time signals and systems using discrete-time Fourier transform and Z-transform.",Monday$14:00-15:00$LR3@,
 Elective,Real Analysis I,MTH2xx,Samaresh Chatterji(V),4,RA,15:00-16:00$C02,10:00-11:00$C02,-,10:00-11:00$C02,-,,"Students are familiar with the real number system, can determine convergence-divergence of sequences and series, and are able to construct epsilon-delta proofs related to limits and continuity.
 Students are familiar with the concepts of differentiation and integration and are able to apply the methods of single-variable calculus. 
 Students are able to apply concepts of continuity, differentiability, extrema and integrability of multivariable functions and evaluate various integrals (line, double, triple and surface integrals).
-",Monday $1:30-3:00$LR2 :,
+",Monday$13:30-15:00$LR2@,
 Elective,Number Theory,MTH2xx,Anuradha Sharma,4,NT,10:00-11:00$C12,-,10:00-11:00$C12,-,9:30-10:30$C12,,"To be able to write down formal Mathematical proofs. To be able to describe properties of some special
 numbertheorectic functions and their growth rates.
 To be able to explain properties of numbers of some special forms.
 To be able to describe complete solutions of some special Diophanti ne equationsand to be able to explain insolvability of some special non-linear Diophantineequations.To be able to explain the proof
 of Lagrange's four squares theorem.To be able to explain basic theory of partitions 
 To be able to explain elementary results on distributions of prime numbers
-To be able to apply numbertheoretic techniques to simply computations. ",Monday $2:00-3:00$C23 : Friday $10:30-11:30$LR1 :,
+To be able to apply numbertheoretic techniques to simply computations. ",Monday$14:00-15:00$C23@Friday$10:30-11:30$LR1@,
 HSS Elective,Perspectives of Knowledge,HSS202,Raj Ayyar (V),4,PoK,16:00-17:30$C24,-,16:00-17:30$C24,-,-,,"Identify the meta-issues concerning knowledge and critically reflect on them. 
 Demonstrate awareness of the diversity of epistemic and sociology of knowledge traditions.
 Get acquainted with a set of specific arguments, methodologies, and approaches to questions regarding knowledge.
@@ -61,7 +61,7 @@ It thereby encourages students to relate economic actions to all other forms of 
 In sum, Economic sociology identifies the obligatory, symbolic and power seeking motivations underlying human economic action, not only the useful or utilitarian",,
 HSS Elective,Introduction to Digital Ethonography(New),HSS2xx,Shriram Venkatraman,4,IDE,16:00-17:30$C11,-,16:00-17:30$C11,-,-,,"This course is intended to be an introductory course and will systematically introduce learners to the basics of Digital Ethnography. 
 The course will first introduce learners to the fundamentals of Ethnography as a research method and will then help facilitate its application to the Digital world. ",,
-HSS Elective,Introduction to Meida In Society: A Public Sphere Approach,HSS2xx,Aasim Khan,4,IMS,16:00-17:30$C03,-,16:00-17:30$C03,-,-,,"Describe and analyze the role that media and journalism play in contemporary society
+HSS Elective,Introduction to Meida In Society: A Public Sphere Approach,HSS2xx,Aasim Khan,4,IMS,-,16:00-17:30$C03,-,-,16:00-17:30$C03,,"Describe and analyze the role that media and journalism play in contemporary society
 Demonstrate an understanding of the key issues in media studies and articulate the notion of public sphere and civic participation in India
 Interpret and explain change in media’s role in relation to the other trends particularly digitalization and globalization
 Independently and critically analyze the potential of online technologies to enhance civic and citizens’ participation",,
@@ -73,4 +73,3 @@ HSS Elective,Introduction to Poetry,HSS223A,Saumya Kulshreshtha(G),2,PO,-,16:30-
 Major English language poets from the British and American canon, post romantic era.
 Evolution of English poetry in India, along with famous poets.
 Figures of speech and different forms of poetry.",,
-,,,,,,,,,,,,,,

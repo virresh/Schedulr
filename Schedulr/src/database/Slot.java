@@ -38,6 +38,47 @@ public class Slot implements Serializable,Comparable<Slot>{
 	
 	@Override
 	public String toString() {
-		return code+"\n"+type+"\n"+venue;
+		if(type.equals("Lec")) {
+			return code+"  "+venue;
+		}
+		else {
+			return code+"  "+type+"\n"+venue;
+		}
+	}
+	/**
+	 * @return the startTime
+	 */
+	public int getStartTime() {
+		return startTime;
+	}
+	/**
+	 * @return the endTime
+	 */
+	public int getEndTime() {
+		return endTime;
+	}
+	/**
+	 * @return the subject
+	 */
+	public String getSubject() {
+		return subject;
+	}
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+	/**
+	 * @return the venue
+	 */
+	public String getVenue() {
+		return venue;
+	}
+	/**
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
 	}
 }

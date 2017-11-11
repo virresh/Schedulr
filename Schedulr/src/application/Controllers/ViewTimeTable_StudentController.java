@@ -2,26 +2,38 @@ package application.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
 
+import database.CReader;
+import database.Slot;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
-public class ViewTimeTable_StudentController {
+public class ViewTimeTable_StudentController implements Initializable{
 	@FXML
 	private Button Bt_back;
 	@FXML
 	private ComboBox CB_select;
 	@FXML
 	private ListView LV_timeTable;
+	@FXML
+    private Pane PN_DrawPane;
 
 	// Event Listener on Button[#Bt_back].onAction
 	@FXML
@@ -36,5 +48,24 @@ public class ViewTimeTable_StudentController {
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// Makes the timeTable magically based of the TimeTable HashMap.
+		Set<String> s = CReader.tt.getKeySet();
+		for(String i:s) {
+			List<Slot> l = CReader.tt.getSlots(i);
+			// get list of slots of i-th Day
+			HBox h = new HBox();
+			Label l1 = new Label(i);
+			h.getChildren().add(l1);
+			for(Slot j: l) {
+				Label x = new Label(j.toString());
+				h.getChildren().add(x);
+			}
+			PN_DrawPane.getChildren().add(h);
+		}
+		System.out.println("I got Executed !!");
 	}
 }

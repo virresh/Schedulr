@@ -2,13 +2,23 @@ package application;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+/**
+ * 
+ * This is the client code for running up the TimeTable management system.
+ * @author Viresh Gupta
+ *
+ */
 
 public class Main extends Application {
+	
+	/**
+	 * Start method will simply be responsible for starting the main GUI
+	 */
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

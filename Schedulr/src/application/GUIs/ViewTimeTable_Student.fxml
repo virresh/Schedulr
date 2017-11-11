@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ViewTimeTable_StudentController">
@@ -25,9 +26,10 @@
             <Insets left="440.0" top="20.0" />
          </VBox.margin>
       </ComboBox>
-      <ListView fx:id="LV_timeTable" prefHeight="200.0" prefWidth="200.0">
+      <ListView fx:id="LV_timeTable" prefHeight="0.0" prefWidth="560.0">
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin></ListView>
+      <Pane fx:id="PN_DrawPane" prefHeight="317.0" prefWidth="600.0" />
    </children>
 </VBox>

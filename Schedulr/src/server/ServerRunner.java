@@ -1,6 +1,7 @@
 package server;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -33,6 +34,21 @@ public class ServerRunner {
 		ul = (UserList)I.readObject();
 		I.close();
 	}
+	
+	public static void saveToDisk() throws FileNotFoundException, IOException {
+		System.out.println("Saving the changes to disk.");
+		ObjectOutputStream f = new ObjectOutputStream(new FileOutputStream("./src/database/timeTable.dat")); 
+		f.writeObject(tt);
+		f.close();
+		
+		f = new ObjectOutputStream(new FileOutputStream("./src/database/courses.dat"));
+		f.writeObject(cl);
+		f.close();
+		
+		f = new ObjectOutputStream(new FileOutputStream("./src/database/users.dat"));
+		f.writeObject(ul);
+		f.close();
+	}
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		initialise();
@@ -56,17 +72,7 @@ public class ServerRunner {
 			e.printStackTrace();
 		}finally {
 			me.close();
-			ObjectOutputStream f = new ObjectOutputStream(new FileOutputStream("./src/database/timeTable.dat")); 
-			f.writeObject(tt);
-			f.close();
-			
-			f = new ObjectOutputStream(new FileOutputStream("./src/database/courses.dat"));
-			f.writeObject(cl);
-			f.close();
-			
-			f = new ObjectOutputStream(new FileOutputStream("./src/database/users.dat"));
-			f.writeObject(ul);
-			f.close();
+			saveToDisk();
 		}
 	}
 

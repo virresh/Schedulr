@@ -42,6 +42,7 @@ public class ConnectionHandler implements Runnable {
 							if(lock.tryLock(500,TimeUnit.MILLISECONDS)) {
 								out.writeObject(ServerRunner.tt);
 								out.flush();
+								lock.unlock();
 								break;
 							}
 						} catch (InterruptedException e) {

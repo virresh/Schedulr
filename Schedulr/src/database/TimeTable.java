@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 public class TimeTable implements Serializable {
-	 private HashMap<String,List<Slot>> hm;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7389886342572778766L;
+	private HashMap<String,List<Slot>> hm;
 	 TimeTable(){
 		 hm = new HashMap<String,List<Slot>>();
 		 hm.put("Monday", new ArrayList<Slot>());

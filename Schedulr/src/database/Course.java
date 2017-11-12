@@ -1,16 +1,24 @@
 package database;
 
-public class Course {
-	private String status,name,code,instructorName,acronym;
+import java.io.Serializable;
+
+public class Course implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8070851068529370648L;
+	private String status,name,code,instructorName,acronym,preconditions,postconditions;
 	private int credits;
 	
-	Course(String s,String n,String c,String iN,String a,int cr){
-		status = s;
-		name = n;
-		code = c;
-		instructorName = iN;
-		acronym = a;
-		credits = cr;
+	Course(String s,String n,String c,String iN,String a,int cr,String pre, String post){
+		status = s;	// mandatory, elective, etc etc
+		name = n;	// name of course
+		code = c;	// course code
+		instructorName = iN;	// instructor name, not necessarily registered in the database
+		acronym = a;	// course acronym
+		credits = cr;	// course credits
+		preconditions = pre;	// course preconditions
+		postconditions = post;	// course postcondtions
 	}
 
 	/**
@@ -53,5 +61,19 @@ public class Course {
 	 */
 	public int getCredits() {
 		return credits;
+	}
+
+	/**
+	 * @return the preconditions
+	 */
+	public String getPreconditions() {
+		return preconditions;
+	}
+
+	/**
+	 * @return the postconditions
+	 */
+	public String getPostconditions() {
+		return postconditions;
 	}
 }

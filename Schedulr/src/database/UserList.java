@@ -14,13 +14,13 @@ public class UserList implements Serializable{
 		ulist = new HashMap<String, User>();
 	}
 	
-	public boolean authenticateUser(String id, String pass) {
+	public User authenticateUser(String id, String pass) {
 		if(ulist.containsKey(id)) {
 			if(ulist.get(id).authenticate(pass) == true) {
-				return true;
+				return ulist.get(id);
 			}
 		}
-		return false;
+		return null;
 	}
 	
 	public boolean addUser(User o) {

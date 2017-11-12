@@ -1,6 +1,5 @@
 package application;
 	
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -25,7 +24,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	/**
-	 * Start method will simply be responsible for starting the main GUI
+	 * This class is the main Component servicing the Client Side.
+	 * This class will be responsible for rendering and handling events on the client side.
 	 */
 	
 	public static TimeTable tt;
@@ -35,7 +35,7 @@ public class Main extends Application {
 	static Socket server;
 	static ObjectOutputStream out;
 	static ObjectInputStream in;
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -50,6 +50,11 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Get's Time Table over the Socket
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void requestTimeTable() throws IOException, ClassNotFoundException {
 		out.writeUTF("Timetable");
 		out.flush();
@@ -115,16 +120,54 @@ public class Main extends Application {
 	/**
 	 * This method will authenticate whether the user is the required person or not
 	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public static boolean authenticate() {
-		if(u==null) {
-			return false;
+	public static boolean authenticate(String email, String pass) throws IOException, ClassNotFoundException {
+		out.writeUTF("Login");
+		out.flush();
+		while(true) {
+			String j = in.readUTF();
+			if(j.equals("Acknowleged")) {
+				System.out.println("Sending id");
+				out.writeUTF(email);
+				out.flush();
+				break;
+			}
 		}
 		
+		while(true) {
+			String j = in.readUTF();
+			if(j.equals("Next")) {
+				System.out.println("Sending Pass");
+				out.writeUTF(pass);
+				out.flush();
+				break;
+			}
+		}
 		
-		return false;
+		while(true) {
+			String j = in.readUTF();
+			if(j.equals("Success")) {
+				out.writeUTF("SendOK");
+				out.flush();
+				u = null;
+				do {
+					u = (User)in.readObject();
+				}while(u==null);
+				return true;
+			}
+			else if(j.equals("Failure")) {
+				return false;
+			}
+		}
 	}
 	
+	/**
+	 * This method will initialise connections with the server and will hand-over control to the JavaFX engine
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		connectAndInitialise();
 		try {

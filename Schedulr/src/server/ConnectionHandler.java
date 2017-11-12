@@ -87,6 +87,50 @@ public class ConnectionHandler implements Runnable {
 						}
 					}while(true);
 				}
+				else if(x.equals("Login")) {
+					out.writeUTF("Acknowleged");
+					out.flush();
+					System.out.println("Reading ID");
+					String email=null;
+					String pass = null;
+					do {
+						email = in.readUTF();
+					}while(email == null);
+					System.out.println("Reading Pass");
+					out.writeUTF("Next");
+					out.flush();
+					do {
+						pass = in.readUTF();
+					}while(pass==null);
+					do {
+						try {
+							if(lock.tryLock(500,TimeUnit.MILLISECONDS)) {
+								User p = ServerRunner.ul.authenticateUser(email, pass);
+								if(p!=null) {
+									out.writeUTF("Success");
+									out.flush();
+									String k = null;
+									do {
+										k = in.readUTF();
+										if(k.equals("SendOK")) {
+											out.writeObject(p);
+											out.flush();
+											break;
+										}
+									}while(k!=null);
+								}
+								else {
+									out.writeUTF("Failure");
+									out.flush();
+								}
+								lock.unlock();
+								break;
+							}
+						} catch (InterruptedException e) {
+
+						}
+					}while(true);
+				}
 				else if(x.equals("End")) {
 					break;
 				}

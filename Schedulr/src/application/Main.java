@@ -119,6 +119,7 @@ public class Main extends Application {
 	
 	/**
 	 * This method will authenticate whether the user is the required person or not
+	 * In case user is the person, place the user in the static user object for further use
 	 * @return
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 

@@ -46,13 +46,28 @@ public class LoginController {
 			try {
 				if(Main.authenticate(Tx_Uname.getText(), Tx_Passwd.getText())) {
 					L_Status.setText("Login Succeeded");
+					String LoadFile = null;
+					if(Main.u.getType().equals("Student")) {
+						LoadFile = "../GUIs/StudentLogin.fxml";
+					}
+					else if(Main.u.getType().equals("Faculty")) {
+						LoadFile = "/application/GUIs/FacultyLogin.fxml";
+					}
+					Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
+				    Parent root=null;
+					try {
+						root = FXMLLoader.load(LoginController.class.getResource(LoadFile));
+					} catch (IOException e) {
+						e.printStackTrace();
+						return;
+					}
+				    stageTheLabelBelongs.setScene(new Scene(root));
+					
 					return;
 				}
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			L_Status.setText("Login Failed");

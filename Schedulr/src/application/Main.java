@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import constants.Constants;
+import constants.RequestObj;
 import database.TimeTable;
 import database.User;
 import javafx.application.Application;
@@ -40,7 +41,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
-//			Parent root = FXMLLoader.load(getClass().getResource("../application/GUIs/ViewTimeTable_Student.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Schedulr");
 			primaryStage.setScene(scene);
@@ -56,12 +56,14 @@ public class Main extends Application {
 	 * @throws ClassNotFoundException
 	 */
 	public static void requestTimeTable() throws IOException, ClassNotFoundException {
-		out.writeUTF("Timetable");
+		RequestObj r = new RequestObj("Timetable",null);
+		
+		out.writeObject(r);
 		out.flush();
 		while(true) {
-			String s = in.readUTF();
-			if(s.equals("Acknowleged")) {
-				tt = (TimeTable)in.readObject();
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				tt = (TimeTable)r.x;
 				break;
 			}
 		}			
@@ -85,33 +87,29 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * This method will signup the user if possible, and return false otherwise
+	 * This method will sign-up the user if possible, and return false otherwise
 	 * @param x
 	 * @return
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public static boolean signUp(User x) throws IOException {
+	public static boolean signUp(User x) throws IOException, ClassNotFoundException {
 		if(x==null) {
 			return false;
 		}
-		out.writeUTF("Signup");
+		
+		RequestObj r = new RequestObj("Signup",x);
+		
+		out.writeObject(r);
 		out.flush();
+
 		while(true) {
-			String j = in.readUTF();
-			if(j.equals("Acknowleged")) {
-				out.writeObject(x);
-				out.flush();
-				break;
-			}
-		}
-		while(true) {
-			String s = in.readUTF();
-			if(s.equals("Success")) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Success")) {
 				return true;
 			}
-			else {
+			else if(r.mode.equals("Failure")) {
 				return false;
 			}
 		}		
@@ -125,47 +123,27 @@ public class Main extends Application {
 	 * @throws ClassNotFoundException 
 	 */
 	public static boolean authenticate(String email, String pass) throws IOException, ClassNotFoundException {
-		out.writeUTF("Login");
+		String[] p = new String[2];
+		p[0] = email;
+		p[1] = pass;
+		RequestObj r = new RequestObj("Login",p);
+		out.writeObject(r);
 		out.flush();
-		while(true) {
-			String j = in.readUTF();
-			if(j.equals("Acknowleged")) {
-				System.out.println("Sending id");
-				out.writeUTF(email);
-				out.flush();
-				break;
-			}
-		}
 		
 		while(true) {
-			String j = in.readUTF();
-			if(j.equals("Next")) {
-				System.out.println("Sending Pass");
-				out.writeUTF(pass);
-				out.flush();
-				break;
-			}
-		}
-		
-		while(true) {
-			String j = in.readUTF();
-			if(j.equals("Success")) {
-				out.writeUTF("SendOK");
-				out.flush();
-				u = null;
-				do {
-					u = (User)in.readObject();
-				}while(u==null);
+			r =  (RequestObj) in.readObject();
+			if(r.mode.equals("Success")) {
+				u = (User)r.x;
 				return true;
 			}
-			else if(j.equals("Failure")) {
+			else if(r.mode.equals("Failure")) {
 				return false;
 			}
 		}
 	}
 	
 	/**
-	 * This method will initialise connections with the server and will hand-over control to the JavaFX engine
+	 * This method will initialize connections with the server and will hand-over control to the JavaFX engine
 	 * @param args
 	 * @throws IOException
 	 */
@@ -175,7 +153,8 @@ public class Main extends Application {
 			launch(args);
 		}
 		finally {
-			out.writeUTF("End");
+			RequestObj r = new RequestObj("End",null);
+			out.writeObject(r);
 			out.flush();
 			server.close();
 			System.out.println("Succesful Connection Termination");

@@ -20,6 +20,16 @@ public class Course implements Serializable{
 		preconditions = pre;	// course preconditions
 		postconditions = post;	// course postcondtions
 	}
+	
+	@Override
+	public String toString() {
+		return status+" "+name+" "+code;
+	}
+	
+	public String getDetailedString() {
+		return "Course - "+name+" : "+code + " , "+acronym+"\n"+"Taught by "+instructorName+"\n"+"Worth "+credits+" credits\n Preconditions - \n"+preconditions+"\nPostconditions - \n"+postconditions;
+	}
+	
 
 	/**
 	 * @return the status

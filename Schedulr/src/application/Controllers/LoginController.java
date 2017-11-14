@@ -73,46 +73,6 @@ public class LoginController {
 			L_Status.setText("Login Failed");
 			return;
 		}
-//		else if(Tx_Uname.getText().equals("student@iiitd.ac.in") && Tx_Passwd.getText().equals("pass")) {
-//			L_Status.setText("Student Login :)");
-//			// Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//		    Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
-//		    Parent root=null;
-//			try {
-//				root = FXMLLoader.load(LoginController.class.getResource("../GUIs/StudentLogin.fxml"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				return;
-//			}
-//		    stageTheLabelBelongs.setScene(new Scene(root));
-//		}
-//		else if(Tx_Uname.getText().equals("faculty@iiitd.ac.in") && Tx_Passwd.getText().equals("pass")) {
-//			L_Status.setText("Faculty Login :)");
-//			Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
-//		    Parent root=null;
-//			try {
-//				root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/FacultyLogin.fxml"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				return;
-//			}
-//		    stageTheLabelBelongs.setScene(new Scene(root));
-//		}
-//		else if(Tx_Uname.getText().equals("admin@iiitd.ac.in") && Tx_Passwd.getText().equals("pass")) {
-//			L_Status.setText("Admin Login :)");
-//			Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
-//		    Parent root=null;
-//			try {
-//				root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/AdminPage1.fxml"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				return;
-//			}
-//		    stageTheLabelBelongs.setScene(new Scene(root));
-//		}
-//		else {
-//			L_Status.setText("Invalid Username/Password");
-//		}
 	}
 	// Event Listener on Button[#Bt_Signup].onAction
 	@FXML

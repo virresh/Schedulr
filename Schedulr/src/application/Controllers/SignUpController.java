@@ -82,7 +82,7 @@ public class SignUpController implements Initializable{
 				L_status.setText("Sign Up failed !");
 				return;
 			}
-		} catch (IOException e1) {
+		} catch (IOException | ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			return;

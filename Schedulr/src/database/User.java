@@ -29,4 +29,25 @@ public abstract class User implements Serializable{
 			return false;
 		}
 	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return the courses
+	 */
+	public Set<String> getCourses() {
+		return courses;
+	}
 }

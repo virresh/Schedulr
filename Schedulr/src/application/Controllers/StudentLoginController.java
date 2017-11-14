@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -64,9 +65,14 @@ public class StudentLoginController implements Initializable{
 		try 
 		{
 			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewTimeTable_Student.fxml"));
+			Main.requestTimeTable();
 		} 
 		catch (IOException e) 
 		{
+			e.printStackTrace();
+			return;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
@@ -126,6 +132,6 @@ public class StudentLoginController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		L_greet.setText("Welcome Student !");		
+		L_greet.setText("Welcome "+Main.u.getName()+" !");		
 	}
 }

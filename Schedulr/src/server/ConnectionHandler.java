@@ -41,6 +41,9 @@ public class ConnectionHandler implements Runnable {
 						response = new RequestObj( "Acknowleged",ServerRunner.tt);
 						System.out.println("Written TimeTable");
 					}
+					else if(req.mode.equals("CourseAll")) {
+						response = new RequestObj("Acknowleged",ServerRunner.cl.getAllCourses());
+					}
 					else if(req.mode.equals("Login")) {
 						String email=null;
 						String pass = null;

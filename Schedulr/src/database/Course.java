@@ -23,7 +23,7 @@ public class Course implements Serializable{
 	
 	@Override
 	public String toString() {
-		return status+" "+name+" "+code;
+		return status+" , "+code+"\t"+name;
 	}
 	
 	public String getDetailedString() {

@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 import constants.Constants;
 import constants.RequestObj;
+import database.Course;
 import database.TimeTable;
 import database.User;
 import javafx.application.Application;
@@ -68,6 +70,19 @@ public class Main extends Application {
 			}
 		}			
 	}
+	
+	public static List<Course> requestCourses() throws ClassNotFoundException, IOException{
+		RequestObj r = new RequestObj("CourseAll",null);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return (List<Course>) r.x;
+			}
+		}
+	}
+	
 	/**
 	 * This function will connect to the database and set up and initialise required objects
 	 */
@@ -153,11 +168,19 @@ public class Main extends Application {
 			launch(args);
 		}
 		finally {
-			RequestObj r = new RequestObj("End",null);
+			exit();
+		}
+	}
+	
+	public static void exit() {
+		RequestObj r = new RequestObj("End",null);
+		try {
 			out.writeObject(r);
 			out.flush();
 			server.close();
-			System.out.println("Succesful Connection Termination");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		System.out.println("Succesful Connection Termination");
 	}
 }

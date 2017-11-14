@@ -16,9 +16,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Main;
+import database.Course;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 
 public class ViewCourses_forStudentController implements Initializable{
 	@FXML
@@ -33,6 +38,8 @@ public class ViewCourses_forStudentController implements Initializable{
 	private Button Bt_logout;
 	@FXML
 	private Button Bt_register;
+	@FXML
+	private ListView Lv_courses;
 
 	// Event Listener on Button[#Bt_back].onAction
 	@FXML
@@ -65,6 +72,19 @@ public class ViewCourses_forStudentController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		List<Courses> l = Main.requestCourses();
+		List<Course> l = null;
+		try {
+			l = Main.requestCourses();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Main.exit();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Main.exit();
+		}
+		ObservableList<Course> x = FXCollections.observableArrayList(l);
+		Lv_courses.setItems(x);
 	}
 }

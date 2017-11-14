@@ -38,17 +38,12 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </ComboBox>
-            <Button id="Bt_Logout" fx:id="Bt_logout" mnemonicParsing="false" onAction="#f_logout" prefHeight="27.0" prefWidth="76.0" text="Logout">
-               <HBox.margin>
-                  <Insets left="100.0" right="5.0" />
-               </HBox.margin>
-            </Button>
          </children>
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <ListView prefHeight="269.0" prefWidth="570.0">
+      <ListView fx:id="Lv_courses" prefHeight="269.0" prefWidth="570.0">
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </VBox.margin>

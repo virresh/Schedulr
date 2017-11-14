@@ -36,6 +36,24 @@ public class Slot implements Serializable,Comparable<Slot>{
 		}
 	}
 	
+	public boolean clashes(Slot b) {
+		
+		if(this.startTime > b.startTime && this.startTime < b.endTime) {
+			System.out.println("1");
+			return true;
+		}
+		else if(this.endTime > b.startTime && this.endTime <b.endTime) {
+			System.out.println("2");
+			return true;
+		}
+		else if(this.startTime == b.startTime && this.endTime == b.endTime) {
+			System.out.println("3");
+			return true;
+		}
+		
+		return false;		
+	}
+	
 	@Override
 	public String toString() {
 		if(type.equals("Lec")) {

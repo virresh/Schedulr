@@ -1,7 +1,9 @@
 package database;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class UserList implements Serializable{
 
@@ -45,5 +47,15 @@ public class UserList implements Serializable{
 			ulist.put(o.email, o);
 			return true;
 		}
+	}
+	
+	public List<User> getEnrolled(String c){
+		List<User> o = new ArrayList<User>();
+		for(User x: ulist.values()) {
+			if(x.hasRegistered(c)) {
+				o.add(x);
+			}
+		}
+		return o;
 	}
 }

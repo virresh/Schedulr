@@ -45,6 +45,16 @@ public class TimeTable implements Serializable {
 		 }
 	 }
 	 
+	 public List<Slot> getAllSlots(){
+		 List<Slot> p = new ArrayList<Slot>();
+		 for(List<Slot> i : hm.values()) {
+			 for(Slot x:i) {
+				 p.add(x);
+			 }
+		 }
+		 return p;
+	 }
+	 
 	 public Set<String> getKeySet(){
 		 return hm.keySet();
 	 }

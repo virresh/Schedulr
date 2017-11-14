@@ -47,7 +47,6 @@ public class ConnectionHandler implements Runnable {
 					else if(req.mode.equals("UserGet")) {
 						User x = (User)req.x;
 						User y = ServerRunner.ul.getUser(x);
-						out.reset();
 						response = new RequestObj("Acknowleged",y);
 					}
 					else if(req.mode.equals("UserPut")) {
@@ -123,6 +122,7 @@ public class ConnectionHandler implements Runnable {
 				if(req.mode.equals("End")) {
 					break;
 				}
+				out.reset();
 				out.writeObject(response);
 				out.flush();
 			}		

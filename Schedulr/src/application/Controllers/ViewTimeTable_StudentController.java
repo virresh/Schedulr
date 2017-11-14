@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import database.CReader;
 import database.Slot;
 import database.TimeTable;
@@ -37,7 +38,7 @@ public class ViewTimeTable_StudentController implements Initializable{
 	private VBox V_backBox;
 	
 	private int minCol,maxCol;
-	private String[] days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+	private String[] days = Constants.days;
 	private TimeTable tt;
 	private GridPane gp = null;
 	

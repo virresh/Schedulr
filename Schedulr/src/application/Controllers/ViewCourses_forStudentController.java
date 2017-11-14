@@ -82,7 +82,7 @@ public class ViewCourses_forStudentController implements Initializable{
 		String k = Tf_search.getText();
 		for (Iterator<Course> iterator = l.iterator(); iterator.hasNext();) {
 		    Course b = iterator.next();
-		    if (Main.u.hasRegistered(b.getAcronym())) {
+		    if (Main.u.hasRegistered(b.getAcronym()) && !CB_criterion.getSelectionModel().getSelectedItem().equals("All")) {
 		        iterator.remove();
 		    }
 		    else if(CB_criterion.getSelectionModel().getSelectedItem().equals("By Postconditions")) {

@@ -44,6 +44,30 @@ public class ConnectionHandler implements Runnable {
 					else if(req.mode.equals("CourseAll")) {
 						response = new RequestObj("Acknowleged",ServerRunner.cl.getAllCourses());
 					}
+					else if(req.mode.equals("UserGet")) {
+						User x = (User)req.x;
+						User y = ServerRunner.ul.getUser(x);
+						out.reset();
+						response = new RequestObj("Acknowleged",y);
+					}
+					else if(req.mode.equals("UserPut")) {
+						User x = (User)req.x;
+						ServerRunner.ul.putUser(x);
+						ServerRunner.saveToDisk();
+					}
+					else if(req.mode.equals("CourseAddDrop")) {
+						User x = (User)req.x;
+						String c = (String)req.y;
+						if(ServerRunner.ul.getUser(x).hasRegistered(c)){
+							String res = ServerRunner.ul.getUser(x).deregister(c);
+							response = new RequestObj("Deregistration from course "+c+" "+res,ServerRunner.ul.getUser(x));
+						}
+						else {
+							String res = ServerRunner.ul.getUser(x).registerCourse(ServerRunner.cl.getCourse(c));
+							response = new RequestObj("Registration from course "+c+" "+res,ServerRunner.ul.getUser(x));
+						}
+						ServerRunner.saveToDisk();
+					}
 					else if(req.mode.equals("Login")) {
 						String email=null;
 						String pass = null;

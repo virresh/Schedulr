@@ -23,6 +23,17 @@ public class UserList implements Serializable{
 		return null;
 	}
 	
+	public User getUser(User p) {
+		if(ulist.containsKey(p.email)) {
+			return ulist.get(p.email);
+		}
+		return null;
+	}
+	
+	public void putUser(User q) {
+		ulist.put(q.email, q);
+	}
+	
 	public boolean addUser(User o) {
 		if(o==null) {
 			return false;

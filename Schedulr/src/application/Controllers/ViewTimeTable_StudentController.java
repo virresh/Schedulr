@@ -32,13 +32,33 @@ public class ViewTimeTable_StudentController implements Initializable{
 	@FXML
 	private Button Bt_back;
 	@FXML
-	private ComboBox CB_select;
+	private ComboBox<String> CB_select;
 	@FXML
 	private VBox V_backBox;
 	
 	private int minCol,maxCol;
 	private String[] days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 	private TimeTable tt;
+	private GridPane gp = null;
+	
+	@FXML
+	public void f_updatedTT(ActionEvent event) {
+		try {
+			Main.updateUser();
+			Main.requestTimeTable();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		V_backBox.getChildren().remove(gp);
+		if(CB_select.getSelectionModel().getSelectedItem().equals("All")) {
+			tt = Main.tt;
+		}
+		else {
+			tt = Main.tt.getPersonal(Main.u);
+		}
+		buildTimeTable();		
+		V_backBox.getChildren().add(gp);
+	}
 	
 	// Event Listener on Button[#Bt_back].onAction
 	@FXML
@@ -55,12 +75,9 @@ public class ViewTimeTable_StudentController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// Makes the timeTable magically based of the TimeTable HashMap.
-		tt = Main.tt;
+	void buildTimeTable() {
+		gp = new GridPane();
 		getColBounds();
-		GridPane gp = new GridPane();
 		gp.gridLinesVisibleProperty().set(true);
 		gp.paddingProperty().set(new Insets(50,10,10,10));
 		for(int i=minCol; i<maxCol; i++) {
@@ -128,6 +145,23 @@ public class ViewTimeTable_StudentController implements Initializable{
 		}
 //		gp.setHgap(1);
 //		gp.setVgap(1);
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		CB_select.getItems().add("All");
+		CB_select.getItems().add("Personalized");
+		
+		// Makes the timeTable magically based of the TimeTable HashMap.
+		try {
+			Main.requestTimeTable();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+			Main.exit();
+		}
+		tt = Main.tt;
+		buildTimeTable();
 		V_backBox.getChildren().add(gp);
 	}
 	

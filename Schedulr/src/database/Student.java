@@ -17,5 +17,12 @@ public class Student extends User implements Serializable {
 	public String getType() {
 		return "Student";
 	}
+	
+	@Override
+	public String registerCourse(Course c) {
+		System.out.println("Registering for Student");
+		return super.registerCourse(c);
+		
+	}
 
 }

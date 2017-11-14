@@ -42,7 +42,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="Bt_viewLabel" mnemonicParsing="false" onAction="#f_viewTimeTable" prefHeight="100.0" prefWidth="165.0" text="View Time Table">
+                  <Button fx:id="Bt_viewLabel" mnemonicParsing="false" onAction="#f_viewTimeTable" prefHeight="100.0" prefWidth="165.0" text="View Time Table" visible="false">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>

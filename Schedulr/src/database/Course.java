@@ -27,7 +27,7 @@ public class Course implements Serializable{
 	}
 	
 	public String getDetailedString() {
-		return "Course - "+name+" : "+code + " , "+acronym+"\n"+"Taught by "+instructorName+"\n"+"Worth "+credits+" credits\n Preconditions - \n"+preconditions+"\nPostconditions - \n"+postconditions;
+		return "Course - "+name+" : "+code + " , "+acronym+"\n"+"Taught by "+instructorName+"\n"+"Worth "+credits+" credits\n\nPreconditions - \n"+preconditions+"\n\nPostconditions - \n"+postconditions;
 	}
 	
 

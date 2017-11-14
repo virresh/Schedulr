@@ -31,13 +31,13 @@ public class Main extends Application {
 	 * This class will be responsible for rendering and handling events on the client side.
 	 */
 	
-	public static TimeTable tt;
+	public static volatile TimeTable tt;
 	
-	public static User u;
+	public static volatile User u;
 	
-	static Socket server;
-	static ObjectOutputStream out;
-	static ObjectInputStream in;
+	static volatile Socket server;
+	static volatile ObjectOutputStream out;
+	static volatile ObjectInputStream in;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -69,6 +69,36 @@ public class Main extends Application {
 				break;
 			}
 		}			
+	}
+	
+	public static void userPut() throws IOException {
+		RequestObj r = new RequestObj("UserPut",u);
+		out.writeObject(r);
+		out.flush();
+	}
+	
+	public static void updateUser() throws IOException, ClassNotFoundException {
+		RequestObj r = new RequestObj("UserGet",u);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			RequestObj p = (RequestObj) in.readObject();
+			if(p.mode.equals("Acknowleged")) {
+				u = (User)p.x;
+				break;
+			}
+		}
+	}
+	
+	public static String addDropCourse(String l) throws IOException, ClassNotFoundException {
+		RequestObj p = new RequestObj("CourseAddDrop",u,l);
+		out.writeObject(p);
+		out.flush();
+		while(true) {
+			p = (RequestObj)in.readObject();
+			u = (User)p.x;
+			return p.mode;
+		}		
 	}
 	
 	public static List<Course> requestCourses() throws ClassNotFoundException, IOException{

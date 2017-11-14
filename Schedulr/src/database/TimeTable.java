@@ -13,7 +13,8 @@ public class TimeTable implements Serializable {
 	 */
 	private static final long serialVersionUID = -7389886342572778766L;
 	private HashMap<String,List<Slot>> hm;
-	 TimeTable(){
+	
+	TimeTable(){
 		 hm = new HashMap<String,List<Slot>>();
 		 hm.put("Monday", new ArrayList<Slot>());
 		 hm.put("Tuesday", new ArrayList<Slot>());
@@ -48,5 +49,16 @@ public class TimeTable implements Serializable {
 		 return hm.keySet();
 	 }
 	 
+	 public TimeTable getPersonal(User x) {
+		 TimeTable o = new TimeTable();
+		 for(String day: hm.keySet()) {
+			 for(Slot l : hm.get(day)) {
+				 if(x.hasRegistered(l.getCode())) {
+					 o.addSlot(day, l);
+				 }
+			 }
+		 }
+		 return o;
+	 }
 	 
 }

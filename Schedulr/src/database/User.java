@@ -29,6 +29,25 @@ public abstract class User implements Serializable{
 			return false;
 		}
 	}
+	
+	public boolean hasRegistered(String a) {
+		if(courses.contains(a)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String deregister(String x) {
+		if(courses.remove(x)) {
+			return "Succeeded";
+		}
+		return "Failed";
+	}
+	
+	public String registerCourse(Course c) {
+		courses.add(c.getAcronym());
+		return "Success";
+	}
 
 	/**
 	 * @return the email

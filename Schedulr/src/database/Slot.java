@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Slot implements Serializable,Comparable<Slot>{
 	/**
 	 * Time table Slot Class. This will do stuff you cannot imagine :D.
+	 * venue will store Venues in space separated manner
 	 */
 	private static final long serialVersionUID = 7912644612579068942L;
 	private int startTime,endTime; // Stored in 24 hrs format 100 == 1:00
@@ -98,5 +99,9 @@ public class Slot implements Serializable,Comparable<Slot>{
 	 */
 	public String getCode() {
 		return code;
+	}
+	
+	public String getSlotType() {
+		return "Default";
 	}
 }

@@ -71,4 +71,29 @@ public class TimeTable implements Serializable {
 		 return o;
 	 }
 	 
+	 public String hasClash(Slot x) {
+		 if(x.getSlotType().equals("Default")) {
+			 return "";
+		 }
+		 else if(x.getSlotType().equals("ExtraSlot")) {
+			 ExtraSlot y = (ExtraSlot)x;
+			 for(Slot b : hm.get(y.getDay())) {
+				 if(b.clashes(y)) {
+					 String[] venueB = b.getVenue().split(";");
+					 String[] venueY = y.getVenue().split(";");
+					 for(int i=0; i<venueB.length; i++)
+					 {
+						 for(int j=0; j<venueY.length; j++) {
+							 if(venueB[i].equals(venueY[j])){
+								 return b.getCode();
+							 }
+						 }
+					 }
+				 }
+			 }
+			 return null; 
+		 }
+		 return "";
+	 }
+	 
 }

@@ -67,8 +67,18 @@ public class ViewTimeTable_StudentController implements Initializable{
 		// back action
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
+		String load = "";
+		if(Main.u.getType().equals("Student")) {
+			load = "/application/GUIs/StudentLogin.fxml";
+		}
+		else if(Main.u.getType().equals("Faculty")) {
+			load = "/application/GUIs/FacultyLogin.fxml";
+		}
+		else {
+			load = "/application/GUIs/AdminPage1.fxml";
+		}
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource(load));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
@@ -94,7 +104,7 @@ public class ViewTimeTable_StudentController implements Initializable{
 			l2.setMinHeight(50);
 			gp.add(l2, i+1, 0);
 		}
-		int row = 1;
+		int row = 1; 
 		for(String i:days) {
 			List<Slot> l = tt.getSlots(i);			// get list of slots of i-th Day
 			Label l1 = new Label(i);	// make a label of the day and add to grid

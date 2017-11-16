@@ -11,7 +11,7 @@ public class Slot implements Serializable,Comparable<Slot>{
 	private int startTime,endTime; // Stored in 24 hrs format 100 == 1:00
 	private String subject,type,venue,code;
 	// subject - subject name
-	// type - lecture, tut,lab,other
+	// type - lecture, tut,lab,other, holds the booker's name in case of extra bookings
 	// venue - string of all venues concatenated together, space separated
 	// subjectCode - like DM,AP,TA etc
 	
@@ -25,7 +25,6 @@ public class Slot implements Serializable,Comparable<Slot>{
 	}
 	@Override
 	public int compareTo(Slot o) {
-		// TODO Auto-generated method stub
 		if(this.startTime < o.startTime) {
 			return -1;
 		}

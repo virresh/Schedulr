@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import application.Main;
 import constants.Constants;
+import database.ExtraSlot;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,8 +94,18 @@ public class BookARoom_StudentController implements Initializable {
     void f_back(ActionEvent event) {
     	Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
+		String load = "";
+		if(Main.u.getType().equals("Student")) {
+			load = "/application/GUIs/StudentLogin.fxml";
+		}
+		else if(Main.u.getType().equals("Faculty")) {
+			load = "/application/GUIs/FacultyLogin.fxml";
+		}
+		else {
+			load = "/application/GUIs/AdminPage1.fxml";
+		}
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource(load));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
@@ -102,8 +114,28 @@ public class BookARoom_StudentController implements Initializable {
     }
 
     @FXML
-    void f_submit(ActionEvent event) {
-
+    void f_submit(ActionEvent event) throws ClassNotFoundException, IOException {
+    	if(CB_timings.getSelectionModel().isEmpty() || CB_duration.getSelectionModel().isEmpty() || Tx_purpose.getText().isEmpty() || L_venues.getText().isEmpty() || CB_daysList.getSelectionModel().isEmpty()) {
+    		L_status.setText("Incomplete Information !");
+    		return;
+    	}
+    	
+    	int sTime = Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[0])*100 + Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[1]);
+    	int minutes = (CB_duration.getSelectionModel().getSelectedIndex() + 1) * 30;
+    	int eTime = sTime + (minutes/60) * 100 + (minutes%60);
+    	
+    	ExtraSlot xs = new ExtraSlot(sTime,eTime,Tx_purpose.getText(),Main.u.getEmail(),L_venues.getText(),"OTHER",CB_daysList.getSelectionModel().getSelectedItem());
+    	if(Main.requestRoomBooking(xs)) {
+    		if(Main.u.getType().equals("Student")) {
+    			L_status.setText("Request Registered Successfully");
+    		}
+    		else {
+    			L_status.setText("Room Booked Successfully");
+    		}
+    	}
+    	else {
+    		L_status.setText("Booking Failed");
+    	}
     }
     
     @FXML

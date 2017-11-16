@@ -5,10 +5,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 import constants.RequestObj;
+import database.ExtraSlot;
+import database.Slot;
 import database.User;
 
 public class ConnectionHandler implements Runnable {
@@ -92,6 +96,41 @@ public class ConnectionHandler implements Runnable {
 							out.writeObject(response);
 							out.flush();
 						}
+					}
+					else if(req.mode.equals("RoomBookRequest")) {
+						User ux = (User)req.y;
+						ExtraSlot p = (ExtraSlot)req.x;
+						if(ux.getType().equals("Student")) {
+							if(ServerRunner.tt.hasClash(p) == null) {
+								ServerRunner.bookings.add(p);
+								System.out.println("Adding Request To Book Room");
+								response = new RequestObj("Acknowleged",null);
+								ServerRunner.saveToDisk();
+							}
+							else {
+								response = new RequestObj("Failed",null);
+							}
+						}
+						else {
+							if(ServerRunner.tt.hasClash(p) == null) {
+								ServerRunner.tt.addSlot(p.getDay(), p);
+								response = new RequestObj("Acknowleged",null);
+								ServerRunner.saveToDisk();
+							}
+							else {
+								response = new RequestObj("Failed",null);
+							}
+						}
+					}
+					else if(req.mode.equals("GetBookings")) {
+						User a = (User)req.x;
+						List<Slot> bk = new ArrayList<Slot>();
+						for(Slot t : ServerRunner.bookings) {
+							if(t.getType().equals(a.getEmail())) {
+								bk.add(t);
+							}
+						}
+						response = new RequestObj("Acknowleged",bk);
 					}
 					else if(req.mode.equals("End")) {
 						

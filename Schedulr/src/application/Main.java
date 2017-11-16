@@ -9,6 +9,8 @@ import java.util.List;
 import constants.Constants;
 import constants.RequestObj;
 import database.Course;
+import database.ExtraSlot;
+import database.Slot;
 import database.TimeTable;
 import database.User;
 import javafx.application.Application;
@@ -69,6 +71,33 @@ public class Main extends Application {
 				break;
 			}
 		}			
+	}
+	
+	public static boolean requestRoomBooking(ExtraSlot s) throws IOException, ClassNotFoundException {
+		RequestObj r = new RequestObj("RoomBookRequest",s,u);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}	
+	}
+	
+	public static List<Slot> getBookings() throws IOException, ClassNotFoundException{
+		RequestObj r = new RequestObj("GetBookings",u);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return (List<Slot>)r.x;
+			}
+		}	
 	}
 	
 	public static void userPut() throws IOException {

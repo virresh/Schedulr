@@ -35,7 +35,7 @@ public class ConnectionHandler implements Runnable {
 
 		}
 	}
-	
+
 	RequestObj doStuff(RequestObj req) {
 		RequestObj response = null;
 		do {
@@ -77,7 +77,7 @@ public class ConnectionHandler implements Runnable {
 						String[] pR = (String[])req.x;
 						email = pR[0];
 						pass = pR[1];
-						
+
 						User p = ServerRunner.ul.authenticateUser(email, pass);
 						if(p!=null) {
 							response = new RequestObj("Success",p);
@@ -130,10 +130,31 @@ public class ConnectionHandler implements Runnable {
 								bk.add(t);
 							}
 						}
+
+						for(Slot t: ServerRunner.tt.getAllSlots()) {
+							if(t.getType().equals(a.getEmail())) {
+								bk.add(t);
+							}
+						}
 						response = new RequestObj("Acknowleged",bk);
 					}
+					else if(req.mode.equals("CancelBooking")) {
+						Slot h = (Slot)req.x;
+						System.out.println(h.getType());
+						System.out.println(ServerRunner.bookings.size());
+						try {
+							ServerRunner.tt.removeSlot((ExtraSlot) h);
+							ServerRunner.bookings.remove(h);
+							System.out.println("Deleting Slot");
+							System.out.println(ServerRunner.bookings.contains(h));
+						}catch(Exception ex) {
+							ex.printStackTrace();
+						}
+						System.out.println(ServerRunner.bookings.size());
+						ServerRunner.saveToDisk();
+					}
 					else if(req.mode.equals("End")) {
-						
+
 					}
 					lock.unlock();
 					break;
@@ -152,7 +173,7 @@ public class ConnectionHandler implements Runnable {
 	@Override
 	public void run() {	
 		try	{	
-			
+
 			RequestObj req = null;
 			RequestObj response = null;
 			while(true) {
@@ -161,12 +182,14 @@ public class ConnectionHandler implements Runnable {
 				if(req.mode.equals("End")) {
 					break;
 				}
-				out.reset();
-				out.writeObject(response);
-				out.flush();
+				if(response != null) {
+					out.reset();
+					out.writeObject(response);
+					out.flush();
+				}
 			}		
 		} catch (IOException | ClassNotFoundException e)	{
-//			e.printStackTrace();
+//				e.printStackTrace();
 		} finally {
 			try {
 				System.out.println("Closing connection.");

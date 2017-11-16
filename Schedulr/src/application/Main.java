@@ -100,6 +100,12 @@ public class Main extends Application {
 		}	
 	}
 	
+	public static void deleteBookings(Slot k) throws IOException {
+		RequestObj h = new RequestObj("CancelBooking",k);
+		out.writeObject(h);
+		out.flush();
+	}
+	
 	public static void userPut() throws IOException {
 		RequestObj r = new RequestObj("UserPut",u);
 		out.writeObject(r);

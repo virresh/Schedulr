@@ -12,7 +12,7 @@ public class ExtraSlot extends Slot {
 		super(sTime, eTime, sub, typ, ven, acr);
 		day = d;
 	}
-	
+		
 	@Override
 	public String getSlotType() {
 		return "ExtraSlot";

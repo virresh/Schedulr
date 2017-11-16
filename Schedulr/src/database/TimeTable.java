@@ -34,6 +34,10 @@ public class TimeTable implements Serializable {
 		 }
 	 }
 	 
+	 public void removeSlot(ExtraSlot h) {
+		 hm.get(h.getDay()).remove(h);
+	 }
+	 
 	 public List<Slot> getSlots(String day){
 		 if(hm.containsKey(day)) {
 			 List<Slot> l = hm.get(day);

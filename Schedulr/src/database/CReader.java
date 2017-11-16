@@ -69,6 +69,5 @@ public class CReader{
 		
 		f.writeObject(tt);
 		f.close();
-		Main.main(null);
 	}
 }

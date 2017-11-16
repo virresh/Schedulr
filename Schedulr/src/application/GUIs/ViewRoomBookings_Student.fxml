@@ -29,12 +29,12 @@
          </VBox.margin></ListView>
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="Bt_view" mnemonicParsing="false" text="View Complete">
+            <Button fx:id="Bt_view" mnemonicParsing="false" onAction="#f_viewBooking" text="View Complete">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Bt_cancelBooking" mnemonicParsing="false" text="Cancel Booking">
+            <Button fx:id="Bt_cancelBooking" mnemonicParsing="false" onAction="#f_cancelBooking" text="Cancel Booking">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>

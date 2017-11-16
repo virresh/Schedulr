@@ -23,6 +23,8 @@ public class Slot implements Serializable,Comparable<Slot>{
 		venue = ven;
 		code = acr;
 	}
+	
+	
 	@Override
 	public int compareTo(Slot o) {
 		if(this.startTime < o.startTime) {
@@ -52,6 +54,22 @@ public class Slot implements Serializable,Comparable<Slot>{
 		}
 		
 		return false;		
+	}
+	
+	public String getDetails() {
+		return subject+"\n"+code+"\n"+venue+"\n"+type+"\nFrom : "+startTime+"\nTo : "+endTime;
+	}
+	
+	@Override
+	public boolean equals(Object c) {
+		if(!( c instanceof Slot) ){
+			return false;
+		}
+		Slot b= (Slot)c;
+		if(this.startTime == b.startTime && this.endTime == b.endTime && this.code.equals(b.code) && this.venue.equals(b.venue) && this.subject.equals(b.subject) && this.type.equals(b.type)) {
+			return true;
+		}
+		return false;
 	}
 	
 	@Override

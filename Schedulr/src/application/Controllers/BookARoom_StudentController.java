@@ -40,6 +40,9 @@ public class BookARoom_StudentController implements Initializable {
 
     @FXML
     private TextField Tx_purpose;
+    
+    @FXML
+    private TextField Tx_capacity;
 
     @FXML
     private ChoiceBox<String> CB_venues;
@@ -57,7 +60,44 @@ public class BookARoom_StudentController implements Initializable {
     private Label L_venues;
     
     private ArrayList<String> venues;
+    
+    private ExtraSlot exS;
+    private String email;
 
+    public ExtraSlot getExSl() {
+    	exS = makeSlot();
+    	return exS;
+    }
+    public void setEditAble(ExtraSlot q) {   
+    	exS = null;
+    	email = q.getType();
+    	Tx_purpose.setText(q.getSubject());
+    	Tx_capacity.setText(""+q.getCapacity());
+    	
+    	venues = new ArrayList<String>();
+    	String[] x = q.getVenue().split(";");
+    	for(String p: x) {
+    		venues.add(p);
+    	}
+    	L_venues.setText(generateVLabel());
+    	CB_daysList.getSelectionModel().select(q.getDay());
+
+    	
+    	int timiInd = (q.getStartTime()/100)*2 + ((q.getStartTime()%100 == 30)?1:0) ;
+    	int timeEnd = (q.getEndTime()/100 - q.getStartTime()/100)*2 + ((q.getEndTime()%100)/30 - (q.getStartTime()%100)/30) - 1;
+    	CB_timings.getSelectionModel().select(timiInd);
+    	f_setDuration(null);
+    	CB_duration.getSelectionModel().select(timeEnd);
+    	
+    	Tx_capacity.setDisable(true);
+    	Tx_purpose.setDisable(true);
+    	CB_daysList.setDisable(true);
+    	CB_timings.setDisable(true);
+    	CB_duration.setDisable(true);
+    	Bt_back.setVisible(false);
+    	Bt_submit.setVisible(false);
+
+    }
     
     private String generateVLabel() {
     	String x = "";
@@ -114,19 +154,35 @@ public class BookARoom_StudentController implements Initializable {
 		stageTheEventSourceNodeBelongs.sizeToScene();
 		stageTheEventSourceNodeBelongs.centerOnScreen();
     }
-
+    
+    private ExtraSlot makeSlot() {
+    	if(CB_timings.getSelectionModel().isEmpty() || CB_duration.getSelectionModel().isEmpty() || Tx_purpose.getText().isEmpty() || L_venues.getText().isEmpty() || CB_daysList.getSelectionModel().isEmpty() || (!isInteger(Tx_capacity.getText()))) {
+    		return null;
+    	}
+    	int sTime = Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[0])*100 + Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[1]);
+    	int minutes = (CB_duration.getSelectionModel().getSelectedIndex() + 1) * 30;
+    	int eTime = (sTime/100 + (minutes/60)) * 100 + ((minutes%60 + sTime%100)/60) *100 + (minutes%60 + sTime%100)%60;
+    	ExtraSlot xs = new ExtraSlot(sTime,eTime,Tx_purpose.getText(),email,L_venues.getText(),"OTHER",CB_daysList.getSelectionModel().getSelectedItem(),Integer.parseInt(Tx_capacity.getText()));
+    	return xs;
+    }
+    
+    private boolean isInteger(String x) {
+    	try {
+    		Integer.parseInt(x);
+    	}catch (NumberFormatException e) {
+    		return false;
+    	}
+    	return true;
+    }
+    
     @FXML
     void f_submit(ActionEvent event) throws ClassNotFoundException, IOException {
-    	if(CB_timings.getSelectionModel().isEmpty() || CB_duration.getSelectionModel().isEmpty() || Tx_purpose.getText().isEmpty() || L_venues.getText().isEmpty() || CB_daysList.getSelectionModel().isEmpty()) {
+    	if(CB_timings.getSelectionModel().isEmpty() || CB_duration.getSelectionModel().isEmpty() || Tx_purpose.getText().isEmpty() || L_venues.getText().isEmpty() || CB_daysList.getSelectionModel().isEmpty() || (!isInteger(Tx_capacity.getText()))) {
     		L_status.setText("Incomplete Information !");
     		return;
     	}
     	
-    	int sTime = Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[0])*100 + Integer.parseInt(CB_timings.getSelectionModel().getSelectedItem().split(":")[1]);
-    	int minutes = (CB_duration.getSelectionModel().getSelectedIndex() + 1) * 30;
-    	int eTime = sTime + (minutes/60) * 100 + (minutes%60);
-    	
-    	ExtraSlot xs = new ExtraSlot(sTime,eTime,Tx_purpose.getText(),Main.u.getEmail(),L_venues.getText(),"OTHER",CB_daysList.getSelectionModel().getSelectedItem());
+    	ExtraSlot xs = makeSlot();
     	if(Main.requestRoomBooking(xs)) {
     		if(Main.u.getType().equals("Student")) {
     			L_status.setText("Request Registered Successfully");
@@ -163,13 +219,13 @@ public class BookARoom_StudentController implements Initializable {
     			k= k+100-30;
     		}
     	}
-    	
     	CB_duration.setItems(ol);
     }
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		L_venues.setText("");
+		email = Main.u.getEmail();
 		venues = new ArrayList<String>();
 		CB_daysList.setItems(FXCollections.observableArrayList(Constants.days));
 		CB_daysList.getSelectionModel().select(0);

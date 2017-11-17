@@ -97,6 +97,22 @@ public class Main extends Application {
 		}	
 	}
 	
+	public static boolean auditRoomBooking(ExtraSlot s) throws IOException, ClassNotFoundException {
+		RequestObj r = new RequestObj("AuditRoomRequest",s);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}	
+	}
+	
+	
 	/**
 	 * Returns All the pending Requests for the Admin
 	 * @return

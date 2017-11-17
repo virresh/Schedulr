@@ -108,6 +108,18 @@ public class ConnectionHandler implements Runnable {
 							out.flush();
 						}
 					}
+					else if(req.mode.equals("AuditRoomRequest")) {
+						ExtraSlot p = (ExtraSlot)req.x;
+						if(ServerRunner.tt.hasClash(p) == null) {
+							ServerRunner.bookings.add(p);
+							System.out.println("Adding Audited request To Book Room");
+							response = new RequestObj("Acknowleged",null);
+							ServerRunner.saveToDisk();
+						}
+						else {
+							response = new RequestObj("Failed",null);
+						}
+					}
 					else if(req.mode.equals("RoomBookRequest")) {
 						User ux = (User)req.y;
 						ExtraSlot p = (ExtraSlot)req.x;
@@ -136,6 +148,7 @@ public class ConnectionHandler implements Runnable {
 					else if(req.mode.equals("GetBookings")) {
 						User a = (User)req.x;
 						List<Slot> bk = new ArrayList<Slot>();
+						ServerRunner.clearOldRequests();
 						for(Slot t : ServerRunner.bookings) {
 							if(t.getType().equals(a.getEmail()) || a.getType().equals("Admin")) {
 								bk.add(t);
@@ -178,6 +191,7 @@ public class ConnectionHandler implements Runnable {
 						}
 					}
 					else if(req.mode.equals("GetRequests")) {
+						ServerRunner.clearOldRequests();
 						response = new RequestObj("Acknowleged",ServerRunner.bookings);
 					}
 					else if(req.mode.equals("End")) {

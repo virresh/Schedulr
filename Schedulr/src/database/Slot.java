@@ -43,15 +43,15 @@ public class Slot implements Serializable,Comparable<Slot>{
 	public boolean clashes(Slot b) {
 		
 		if(this.startTime > b.startTime && this.startTime < b.endTime) {
-			System.out.println("1");
+			System.out.println("1st type Clash");
 			return true;
 		}
 		else if(this.endTime > b.startTime && this.endTime <b.endTime) {
-			System.out.println("2");
+			System.out.println("2nd type Clash");
 			return true;
 		}
 		else if(this.startTime == b.startTime && this.endTime == b.endTime) {
-			System.out.println("3");
+			System.out.println("3rd type Clash");
 			return true;
 		}
 		
@@ -68,7 +68,7 @@ public class Slot implements Serializable,Comparable<Slot>{
 			return false;
 		}
 		Slot b= (Slot)c;
-		if(this.startTime == b.startTime && this.endTime == b.endTime && this.code.equals(b.code) && this.venue.equals(b.venue) && this.subject.equals(b.subject) && this.type.equals(b.type)) {
+		if(this.startTime == b.startTime && this.endTime == b.endTime && this.venue.equals(b.venue)) {
 			return true;
 		}
 		return false;

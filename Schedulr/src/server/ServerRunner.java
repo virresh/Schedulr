@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import constants.Constants;
 import database.CourseList;
+import database.ExtraSlot;
 import database.Slot;
 import database.TimeTable;
 import database.UserList;
@@ -76,7 +78,19 @@ public class ServerRunner {
 		f.writeObject(bookings);
 		f.close();
 	}
-
+	
+	public static void clearOldRequests() {
+		List<Slot> h = new ArrayList<Slot>();
+		for(Slot p: bookings) {
+			ExtraSlot q = (ExtraSlot)p;
+			if(q.getNumDaysPassed()>5) {
+				h.add(p);
+			}
+		}
+		for(Slot p: h) {
+			bookings.remove(p);
+		}
+	}
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		ServerSocket me = null;
 		try {

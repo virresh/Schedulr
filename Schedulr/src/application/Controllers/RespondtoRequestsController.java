@@ -24,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -44,6 +45,42 @@ public class RespondtoRequestsController implements Initializable{
 	@FXML
 	public void f_edit(ActionEvent event) {
 		
+		if(LV_requests.getSelectionModel().isEmpty()) {
+			L_status.setText("No Request Selected.");
+			return;
+		}
+		Slot v = LV_requests.getSelectionModel().getSelectedItem();
+		ExtraSlot p = (ExtraSlot)v;
+		Parent root = null;
+		FXMLLoader loader = null;
+		loader = new FXMLLoader(getClass().getResource("../GUIs/BookARoom_Student.fxml"));
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene(root);
+		Stage s = new Stage();
+		s.setTitle("Edit Venues");
+		s.setScene(scene);
+		BookARoom_StudentController bk = loader.getController();
+		bk.setEditAble(p);
+		
+		s.showAndWait();
+				
+		p = bk.getExSl();
+		if(p == null) {
+			L_status.setText("No changes Done.");
+		}
+		else {
+			try {
+				Main.deleteBookings(v);
+				Main.auditRoomBooking(p);
+			} catch (IOException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		setup();
 	}
 	// Event Listener on Button[#Bt_back].onAction
 	@FXML

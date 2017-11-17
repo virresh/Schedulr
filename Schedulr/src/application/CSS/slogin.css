@@ -19,17 +19,16 @@
   -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
 }
 
-.combo-box .arrow-button {
-  -fx-text-fill: white;
-}
-
-.combo-box .list-view {
+.combo-box .cell {
   -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
   -fx-text-fill: white;
-}    
+}  
+
+.combo-box .list-cell .text{
+  -fx-fill:white;
+}
 
 .choice-box {
-  -fx-fill: white;
   -fx-font-family: "Arial Narrow";
   -fx-background-color: linear-gradient(#D0a2b1, #AA5008);    
 }
@@ -38,8 +37,11 @@
   -fx-text-fill: white;
 }    
 
+.choice-box .context-menu { -fx-background-color: linear-gradient(#D0a2b1, #AA5008); }
+
+
 .text-field {
-  -fx-fill: white;
+  -fx-text-fill: white;
   -fx-prompt-text-fill: derive(white,-10%);
   -fx-font-family: "Arial Narrow";
   -fx-background-color: linear-gradient(#D0a2b1, #AA5008);      

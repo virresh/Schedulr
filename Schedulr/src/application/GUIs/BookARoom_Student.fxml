@@ -48,6 +48,16 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
+                  <Label text="Enter Capacity:">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="Tx_capacity" alignment="CENTER" promptText="0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
                   <Label text="Choose Timings:">
                      <HBox.margin>
                         <Insets right="50.0" />

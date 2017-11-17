@@ -1,0 +1,46 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root{
+  -fx-background-color:aqua;
+}
+
+.button {
+  -fx-text-fill: white;
+  -fx-font-family: "Arial Narrow";
+  -fx-font-weight: bold;
+  -fx-margin :300px;
+  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);
+  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.combo-box {
+  -fx-fill: white;
+  -fx-font-family: "Arial Narrow";
+  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
+}
+
+.combo-box .arrow-button {
+  -fx-text-fill: white;
+}
+
+.combo-box .list-view {
+  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
+  -fx-text-fill: white;
+}    
+
+.choice-box {
+  -fx-fill: white;
+  -fx-font-family: "Arial Narrow";
+  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);    
+}
+
+.choice-box .label {
+  -fx-text-fill: white;
+}    
+
+.text-field {
+  -fx-fill: white;
+  -fx-prompt-text-fill: derive(white,-10%);
+  -fx-font-family: "Arial Narrow";
+  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);      
+}

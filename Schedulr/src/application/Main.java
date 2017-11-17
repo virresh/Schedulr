@@ -18,6 +18,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -46,6 +47,9 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Schedulr");
 			primaryStage.setScene(scene);
+			primaryStage.sizeToScene();
+			primaryStage.centerOnScreen();
+			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("./Images/Schedulr.png")));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

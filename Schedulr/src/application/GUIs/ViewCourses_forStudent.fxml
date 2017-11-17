@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ViewCourses_forStudentController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: aqua;" stylesheets="@../CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ViewCourses_forStudentController">
    <children>
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="Bt_back" alignment="CENTER" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="View Courses" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="heading" stylesheets="@../CSS/buttonIm.css" text="View Courses" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -29,7 +29,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="Bt_Search" mnemonicParsing="false" onAction="#f_search" prefHeight="26.0" prefWidth="65.0" text="Search">
+            <Button fx:id="Bt_Search" mnemonicParsing="false" onAction="#f_search" text="Search">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -56,12 +56,12 @@
       </Button>
       <Button fx:id="Bt_register" mnemonicParsing="false" onAction="#f_register" text="Register / Deregister for the selected Course">
          <VBox.margin>
-            <Insets left="15.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </VBox.margin>
       </Button>
       <FlowPane alignment="CENTER">
          <children>
-            <Label fx:id="L_status" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+            <Label fx:id="L_status" alignment="CENTER" contentDisplay="CENTER" styleClass="greet" stylesheets="@../CSS/buttonIm.css" textAlignment="CENTER">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
@@ -69,4 +69,7 @@
          </children>
       </FlowPane>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>

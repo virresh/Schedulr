@@ -55,6 +55,8 @@ public class SignUpController implements Initializable{
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+	    stageTheEventSourceNodeBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_submit].onAction
 	@FXML
@@ -98,6 +100,8 @@ public class SignUpController implements Initializable{
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+	    stageTheEventSourceNodeBelongs.centerOnScreen();
 	}
 	
 	

@@ -9,15 +9,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.SignUpController">
+<VBox alignment="CENTER" style="-fx-background-color: aqua;" stylesheets="@../CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.SignUpController">
    <children>
-      <HBox>
+      <HBox alignment="CENTER">
          <children>
             <Button fx:id="Bt_back" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="636.0" text="Sign Up">
+            <Label alignment="CENTER" styleClass="heading" stylesheets="@../CSS/buttonIm.css" text="Sign Up">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </Label>
          </children>
       </HBox>
@@ -43,18 +46,21 @@
       </PasswordField>
       <ComboBox id="CB_User_Type" fx:id="CB_userType" prefHeight="26.0" prefWidth="180.0" promptText="Select User Type">
          <VBox.margin>
-            <Insets left="215.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </ComboBox>
       <Button fx:id="Bt_submit" mnemonicParsing="false" onAction="#f_submit" text="Submit">
          <VBox.margin>
-            <Insets left="270.0" right="200.0" top="45.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
       </Button>
-      <Label fx:id="L_status" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="632.0" text="Get Ready for a revolutionary TimeTable Experience !!!">
+      <Label fx:id="L_status" alignment="CENTER" contentDisplay="CENTER" styleClass="greet" stylesheets="@../CSS/buttonIm.css" text="Get Ready for a revolutionary TimeTable Experience !!!">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>

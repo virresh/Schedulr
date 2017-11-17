@@ -41,6 +41,10 @@ public class RespondtoRequestsController implements Initializable{
 	@FXML
 	private Label L_status;
 
+	@FXML
+	public void f_edit(ActionEvent event) {
+		
+	}
 	// Event Listener on Button[#Bt_back].onAction
 	@FXML
 	public void f_back(ActionEvent event) {
@@ -53,6 +57,8 @@ public class RespondtoRequestsController implements Initializable{
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+		stageTheEventSourceNodeBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_accept].onAction
 	@FXML

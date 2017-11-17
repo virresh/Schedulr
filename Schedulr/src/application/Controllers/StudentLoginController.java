@@ -52,6 +52,8 @@ public class StudentLoginController implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+	    stageTheLabelBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_viewTimeTable].onAction
 	@FXML
@@ -69,11 +71,12 @@ public class StudentLoginController implements Initializable{
 			e.printStackTrace();
 			return;
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+	    stageTheLabelBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_bookRoom].onAction
 	@FXML
@@ -91,6 +94,8 @@ public class StudentLoginController implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+	    stageTheLabelBelongs.centerOnScreen();
 	}
 	
 	// Event Listener on Button[#Bt_viewCourses].onAction
@@ -109,11 +114,12 @@ public class StudentLoginController implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+	    stageTheLabelBelongs.centerOnScreen();
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		L_greet.setText("Welcome "+Main.u.getName()+" !");		
 	}
 }

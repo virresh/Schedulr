@@ -1,4 +1,4 @@
-package application.Controllers;
+package application.Controllers.Useless;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,12 +29,14 @@ public class CancelABooking_forStudentController {
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/StudentLogin.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+	    stageTheEventSourceNodeBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_CancelBooking].onAction
 	@FXML

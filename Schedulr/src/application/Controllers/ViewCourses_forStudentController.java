@@ -69,6 +69,8 @@ public class ViewCourses_forStudentController implements Initializable{
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+		stageTheEventSourceNodeBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_Search].onAction
 	@FXML

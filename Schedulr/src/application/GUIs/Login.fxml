@@ -5,37 +5,44 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="VB_Holder" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.LoginController">
+<VBox fx:id="VB_Holder" alignment="CENTER" disable="false" style="-fx-background-color: aqua;" stylesheets="@../CSS/login.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.LoginController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="600.0" text="Login to Schedulr" textAlignment="CENTER">
+      <Label fx:id="L_greet" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="600.0" text="Login to Schedulr" textAlignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="Tx_Uname" alignment="CENTER" promptText="Username">
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Schedulr.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="Tx_Uname" alignment="CENTER" promptText="Username" style="-fx-font-size: 20;">
          <VBox.margin>
-            <Insets left="200.0" right="200.0" top="100.0" />
+            <Insets bottom="10.0" left="100.0" right="100.0" top="10.0" />
          </VBox.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </TextField>
-      <PasswordField fx:id="Tx_Passwd" alignment="CENTER" promptText="Password">
+      <PasswordField fx:id="Tx_Passwd" alignment="CENTER" promptText="Password" style="-fx-font-size: 20;">
          <VBox.margin>
-            <Insets left="200.0" right="200.0" top="10.0" />
+            <Insets bottom="10.0" left="100.0" right="100.0" top="10.0" />
          </VBox.margin>
       </PasswordField>
-      <Button fx:id="Bt_Login" mnemonicParsing="false" onAction="#f_Login" text="Login">
+      <Button fx:id="Bt_Login" alignment="CENTER" mnemonicParsing="false" onAction="#f_Login" text="Login">
          <VBox.margin>
-            <Insets left="270.0" top="20.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </Button>
       <Button fx:id="Bt_Signup" mnemonicParsing="false" onAction="#f_SignUp" text="New User? Sign up.">
          <VBox.margin>
-            <Insets left="230.0" top="20.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </Button>
       <Label fx:id="L_Status" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="606.0" textAlignment="CENTER">

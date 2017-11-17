@@ -111,6 +111,8 @@ public class BookARoom_StudentController implements Initializable {
 			return;
 		}
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+		stageTheEventSourceNodeBelongs.sizeToScene();
+		stageTheEventSourceNodeBelongs.centerOnScreen();
     }
 
     @FXML

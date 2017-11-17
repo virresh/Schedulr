@@ -74,6 +74,8 @@ public class AdminPage1Controller implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+		stageTheLabelBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_CancelBooking].onAction
 	@FXML
@@ -90,6 +92,8 @@ public class AdminPage1Controller implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+		stageTheLabelBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_BookRoom].onAction
 	@FXML
@@ -106,6 +110,8 @@ public class AdminPage1Controller implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+		stageTheLabelBelongs.centerOnScreen();
 	}
 	// Event Listener on Button[#Bt_RespondToReq].onAction
 	@FXML
@@ -122,6 +128,8 @@ public class AdminPage1Controller implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		stageTheLabelBelongs.sizeToScene();
+		stageTheLabelBelongs.centerOnScreen();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

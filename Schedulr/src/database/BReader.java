@@ -8,6 +8,13 @@ import java.util.List;
 
 import com.opencsv.CSVReader;
 
+/**
+ * 
+ * Class to read and initialise the list of courses.
+ * @author viresh
+ *
+ */
+
 public class BReader {
 
 	public static void main(String[] args) throws IOException {

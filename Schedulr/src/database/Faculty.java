@@ -7,11 +7,15 @@ import java.util.List;
 import constants.Constants;
 import server.ServerRunner;
 
+/**
+ * 
+ * Faculty Class to support the faculty functions
+ * @author viresh
+ *
+ */
+
 public class Faculty extends User implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6704644637996020617L;
 
 	public Faculty(String email, String name, String pass) {

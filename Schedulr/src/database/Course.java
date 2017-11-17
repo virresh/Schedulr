@@ -2,10 +2,14 @@ package database;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * This is a class to hold details of the Courses.
+ * @author viresh
+ *
+ */
+
 public class Course implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8070851068529370648L;
 	private String status,name,code,instructorName,acronym,preconditions,postconditions;
 	private int credits;

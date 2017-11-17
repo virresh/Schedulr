@@ -7,6 +7,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * One Time initialization for bookings array
+ * @author viresh
+ *
+ */
 public class ExSlotReader {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {

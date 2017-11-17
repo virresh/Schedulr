@@ -15,6 +15,12 @@ import database.ExtraSlot;
 import database.Slot;
 import database.User;
 
+/**
+ *This class will serve a single client and process it's requests and send appropriate replies.
+ * @author Baani Leen and Viresh Gupta
+ *
+ */
+
 public class ConnectionHandler implements Runnable {
 
 	Socket connection;
@@ -36,6 +42,11 @@ public class ConnectionHandler implements Runnable {
 		}
 	}
 
+	/**
+	 * This method will process the request from a client.
+	 * @param req
+	 * @return
+	 */
 	RequestObj doStuff(RequestObj req) {
 		RequestObj response = null;
 		do {

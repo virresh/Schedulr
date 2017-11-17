@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+/**
+* Class to store time table as time slots according to the days.
+*/
 public class TimeTable implements Serializable {
-	 /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7389886342572778766L;
 	private HashMap<String,List<Slot>> hm;
 	

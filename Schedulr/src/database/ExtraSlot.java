@@ -1,10 +1,13 @@
 package database;
 
+/**
+ * 
+ * Provides an extension so the users can book slots apart from the predefined ones.
+ * @author Baani Leen and Viresh Gupta
+ *
+ */
 public class ExtraSlot extends Slot {
 
-	/**
-	 * These Slots are the one's bookable by the users
-	 */
 	private static final long serialVersionUID = -6263064100167871276L;
 
 	private String day;

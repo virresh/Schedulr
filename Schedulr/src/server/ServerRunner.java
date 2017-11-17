@@ -17,6 +17,12 @@ import database.Slot;
 import database.TimeTable;
 import database.UserList;
 
+/**
+ * 
+ * This class is responsible for starting server on a port and generating sockets for clients and passing to separate threads.
+ * @author Baani Leen and Viresh Gupta
+ *
+ */
 public class ServerRunner {
 
 	public static volatile TimeTable tt;
@@ -24,6 +30,11 @@ public class ServerRunner {
 	public static volatile UserList ul;
 	public static volatile List<Slot> bookings;
 	
+	/**
+	 * Load up the temporary parameters in ram for faster serving to clients.
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	private static void initialise() throws ClassNotFoundException, IOException {
 		ObjectInputStream I = new ObjectInputStream(new FileInputStream("./src/database/timeTable.dat"));
 		tt = (TimeTable)I.readObject();
@@ -42,6 +53,11 @@ public class ServerRunner {
 		I.close();
 	}
 	
+	/**
+	 * Saves the state to disk.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void saveToDisk() throws FileNotFoundException, IOException {
 		System.out.println("Saving the changes to disk.");
 		ObjectOutputStream f = new ObjectOutputStream(new FileOutputStream("./src/database/timeTable.dat")); 

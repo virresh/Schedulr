@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * UserList class to store a list of users and consists of the database of users.
+ */
+
 public class UserList implements Serializable{
 
 	private static final long serialVersionUID = -1769921675463216624L;
-	/**
-	 * 
-	 */
 	private HashMap<String, User> ulist;
 	public UserList() {
 		ulist = new HashMap<String, User>();

@@ -10,12 +10,12 @@ import com.opencsv.CSVReader;
 
 import application.Main;
 
+/**
+ * This class reads up the CSV file and creates TimeTable hashmap out of that csv and saves it into TimeTable.dat 
+ * @author viresh
+ *
+ */
 public class CReader{
-	
-	/**
-	 * This class reads up the CSV file and creates TimeTable hashmap out of that csv and saves it into TimeTable.dat 
-	 */
-
 	public final static TimeTable tt = new TimeTable();
 	
 	/**

@@ -7,11 +7,12 @@ import java.util.List;
 import constants.Constants;
 import server.ServerRunner;
 
-public class Student extends User implements Serializable {
+/**
+ * Student class to support Student functions.
+ */
 
-	/**
-	 * 
-	 */
+public class Student extends User implements Serializable {
+	
 	private static final long serialVersionUID = 6511838801947326258L;
 
 	public Student(String email, String name, String pass) {

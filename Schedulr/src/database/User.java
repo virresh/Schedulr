@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Abstract User Class, supports authentication of user and other related stuff.
+ */
+
 public abstract class User implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -3875257810585914459L;
 	String email,name;
 	int password;		// Store passwords as integer hashes of a string 

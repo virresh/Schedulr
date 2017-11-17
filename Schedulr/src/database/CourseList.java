@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 
+ * This class holds list of all courses and implements some routine functions for use with GUI
+ * @author viresh
+ *
+ */
+
 public class CourseList implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8701283965624725225L;
 	private HashMap<String,Course> hm;
 	CourseList(){

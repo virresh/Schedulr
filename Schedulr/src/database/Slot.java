@@ -2,17 +2,19 @@ package database;
 
 import java.io.Serializable;
 
+/**
+ * Time table Slot Class. This will do stuff you cannot imagine :D.
+ * venue will store Venues in ; separated manner
+ */
+
 public class Slot implements Serializable,Comparable<Slot>{
-	/**
-	 * Time table Slot Class. This will do stuff you cannot imagine :D.
-	 * venue will store Venues in space separated manner
-	 */
+
 	private static final long serialVersionUID = 7912644612579068942L;
 	private int startTime,endTime; // Stored in 24 hrs format 100 == 1:00
 	private String subject,type,venue,code;
 	// subject - subject name
 	// type - lecture, tut,lab,other, holds the booker's name in case of extra bookings
-	// venue - string of all venues concatenated together, space separated
+	// venue - string of all venues concatenated together, ; separated
 	// subjectCode - like DM,AP,TA etc
 	
 	Slot(int sTime, int eTime, String sub, String typ,String ven, String acr){

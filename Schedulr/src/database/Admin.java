@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Admin class to support the singleton Admin in the userbase.
+ */
+
 public class Admin extends User {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8561974389240109946L;
 
 	public Admin(String email, String name, String pass) {

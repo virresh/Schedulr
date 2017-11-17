@@ -1,5 +1,10 @@
 package constants;
 
+/**
+ * This class holds some constants used at other places throughout.
+ * @author Baani Leen and Viresh Gupta
+ *
+ */
 public abstract class Constants {
 	public static int port = 8272;
 	public static String address = "localhost";

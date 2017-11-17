@@ -22,17 +22,14 @@ import javafx.stage.Stage;
 
 /**
  * 
- * This is the client code for running up the TimeTable management system.
- * @author Viresh Gupta
+ * This is the client code for running up the GUI system.
+ * This class is the main Component servicing the Client Side.
+ * This class will be responsible for rendering and handling events on the client side.
+ * @author Baani Leen and Viresh Gupta
  *
  */
 
 public class Main extends Application {
-	
-	/**
-	 * This class is the main Component servicing the Client Side.
-	 * This class will be responsible for rendering and handling events on the client side.
-	 */
 	
 	public static volatile TimeTable tt;
 	
@@ -74,6 +71,13 @@ public class Main extends Application {
 		}			
 	}
 	
+	/**
+	 * Request the server to book a particular room. Returns True/False depending on Accept/Rejection of Request.
+	 * @param s
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static boolean requestRoomBooking(ExtraSlot s) throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("RoomBookRequest",s,u);
 		out.writeObject(r);
@@ -89,7 +93,16 @@ public class Main extends Application {
 		}	
 	}
 	
+	/**
+	 * Returns All the pending Requests for the Admin
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static List<Slot> getRequests() throws IOException, ClassNotFoundException{
+		if(!u.getType().equals("Admin")) {
+			return null;
+		}
 		RequestObj r = new RequestObj("GetRequests",null);
 		out.writeObject(r);
 		out.flush();
@@ -101,6 +114,12 @@ public class Main extends Application {
 		}	
 	}
 	
+	/**
+	 * Return all the bookings done by the current user
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static List<Slot> getBookings() throws IOException, ClassNotFoundException{
 		RequestObj r = new RequestObj("GetBookings",u);
 		out.writeObject(r);
@@ -113,12 +132,24 @@ public class Main extends Application {
 		}	
 	}
 	
+	/**
+	 * Request the server to delete a booking.
+	 * @param k
+	 * @throws IOException
+	 */
 	public static void deleteBookings(Slot k) throws IOException {
 		RequestObj h = new RequestObj("CancelBooking",k);
 		out.writeObject(h);
 		out.flush();
 	}
 	
+	/**
+	 * Command from admin to accept a request.
+	 * @param k
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static String acceptBookings(Slot k) throws IOException, ClassNotFoundException {
 		RequestObj h = new RequestObj("AcceptBooking",k);
 		out.writeObject(h);
@@ -131,12 +162,21 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Deprecated Method. Only meant for use in debugging and Developing purpose.
+	 * @throws IOException
+	 */
 	public static void userPut() throws IOException {
 		RequestObj r = new RequestObj("UserPut",u);
 		out.writeObject(r);
 		out.flush();
 	}
 	
+	/**
+	 * Deprecated Method for updating User. Only for debugging purpose.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void updateUser() throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("UserGet",u);
 		out.writeObject(r);
@@ -150,6 +190,13 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Method to Register/De-register for a course for the current user. 
+	 * @param l
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static String addDropCourse(String l) throws IOException, ClassNotFoundException {
 		RequestObj p = new RequestObj("CourseAddDrop",u,l);
 		out.writeObject(p);
@@ -161,6 +208,12 @@ public class Main extends Application {
 		}		
 	}
 	
+	/**
+	 * Return a list of all the courses.
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static List<Course> requestCourses() throws ClassNotFoundException, IOException{
 		RequestObj r = new RequestObj("CourseAll",null);
 		out.writeObject(r);
@@ -262,6 +315,9 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Do up cleaning stuff and exit the Client application.
+	 */
 	public static void exit() {
 		RequestObj r = new RequestObj("End",null);
 		try {

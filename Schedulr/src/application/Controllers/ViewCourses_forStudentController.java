@@ -52,8 +52,18 @@ public class ViewCourses_forStudentController implements Initializable{
 	public void f_back(ActionEvent event) {
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
+		String load = "";
+		if(Main.u.getType().equals("Student")) {
+			load = "/application/GUIs/StudentLogin.fxml";
+		}
+		else if(Main.u.getType().equals("Faculty")) {
+			load = "/application/GUIs/FacultyLogin.fxml";
+		}
+		else {
+			load = "/application/GUIs/AdminPage1.fxml";
+		}
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource(load));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

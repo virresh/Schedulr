@@ -29,7 +29,7 @@ public class CancelABooking_forStudentController {
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/StudentLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource("/application/GUIs/StudentLogin.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

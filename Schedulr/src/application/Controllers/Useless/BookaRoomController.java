@@ -1,4 +1,4 @@
-package application.Controllers;
+package application.Controllers.Useless;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public class BookaRoom_FacultyController {
+public class BookaRoomController {
 	@FXML
 	private Button Bt_back;
 	@FXML
@@ -29,7 +29,7 @@ public class BookaRoom_FacultyController {
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/FacultyLogin.fxml"));
+			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/AdminPage1.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

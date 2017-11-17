@@ -49,7 +49,7 @@ public class SignUpController implements Initializable{
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/Login.fxml"));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource("/application/GUIs/Login.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
@@ -92,7 +92,7 @@ public class SignUpController implements Initializable{
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/Login.fxml"));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource("/application/GUIs/Login.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

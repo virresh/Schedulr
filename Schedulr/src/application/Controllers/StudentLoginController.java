@@ -33,7 +33,7 @@ public class StudentLoginController implements Initializable{
 	
 	@FXML
 	public void f_logout(ActionEvent event) {
-		Platform.exit();
+		Main.exit();
 	}
 	
 	// Event Listener on Button[#Bt_viewRoomBookings].onAction

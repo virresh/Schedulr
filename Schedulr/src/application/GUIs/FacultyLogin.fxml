@@ -47,7 +47,7 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="Bt_cancelBooking" mnemonicParsing="false" onAction="#f_cancelBooking" prefHeight="100.0" prefWidth="156.0" text="Cancel a Booking">
+                  <Button fx:id="Bt_viewCourse" mnemonicParsing="false" onAction="#f_cancelBooking" prefHeight="100.0" prefWidth="156.0" text="View Courses">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>

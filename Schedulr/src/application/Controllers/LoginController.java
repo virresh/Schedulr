@@ -53,6 +53,9 @@ public class LoginController {
 					else if(Main.u.getType().equals("Faculty")) {
 						LoadFile = "/application/GUIs/FacultyLogin.fxml";
 					}
+					else {
+						LoadFile = "../GUIs/AdminPage1.fxml";
+					}
 					Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
 				    Parent root=null;
 					try {
@@ -80,7 +83,7 @@ public class LoginController {
 		Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Parent root=null;
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource("/application/GUIs/SignUp.fxml"));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource("/application/GUIs/SignUp.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

@@ -120,7 +120,7 @@ public class ViewRoomBookings_StudentController implements Initializable{
     	
     	ExtraSlot h = (ExtraSlot)LV_bookings.getSelectionModel().getSelectedItem();
     	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Course Information");
+		alert.setTitle("Booking Information");
 		alert.setHeaderText(h.getSubject());
 		alert.getDialogPane().setContent(new Label(h.getDetails()));
 		alert.showAndWait();

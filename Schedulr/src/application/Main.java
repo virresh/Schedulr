@@ -14,6 +14,7 @@ import database.Slot;
 import database.TimeTable;
 import database.User;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -88,6 +89,18 @@ public class Main extends Application {
 		}	
 	}
 	
+	public static List<Slot> getRequests() throws IOException, ClassNotFoundException{
+		RequestObj r = new RequestObj("GetRequests",null);
+		out.writeObject(r);
+		out.flush();
+		while(true) {
+			r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return (List<Slot>)r.x;
+			}
+		}	
+	}
+	
 	public static List<Slot> getBookings() throws IOException, ClassNotFoundException{
 		RequestObj r = new RequestObj("GetBookings",u);
 		out.writeObject(r);
@@ -104,6 +117,18 @@ public class Main extends Application {
 		RequestObj h = new RequestObj("CancelBooking",k);
 		out.writeObject(h);
 		out.flush();
+	}
+	
+	public static String acceptBookings(Slot k) throws IOException, ClassNotFoundException {
+		RequestObj h = new RequestObj("AcceptBooking",k);
+		out.writeObject(h);
+		out.flush();
+		while(true) {
+			RequestObj r = (RequestObj) in.readObject();
+			if(r.mode.equals("Acknowleged")) {
+				return (String)r.x;
+			}
+		}
 	}
 	
 	public static void userPut() throws IOException {
@@ -244,8 +269,9 @@ public class Main extends Application {
 			out.flush();
 			server.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		System.out.println("Succesful Connection Termination");
+		Platform.exit();
 	}
 }

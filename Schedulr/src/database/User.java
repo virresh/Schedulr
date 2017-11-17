@@ -21,6 +21,17 @@ public abstract class User implements Serializable{
 	
 	public abstract String getType();
 	
+	public boolean equals(Object o) {
+		if(!(o instanceof User)) {
+			return false;
+		}
+		User x = (User)o;
+		if(x.email.equals(email) && x.name.equals(name)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean authenticate(String pass) {
 		if(pass.hashCode() == password) {
 			return true;

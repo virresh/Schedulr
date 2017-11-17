@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
+import application.Main;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -27,14 +27,14 @@ public class FacultyLoginController implements Initializable {
 	@FXML
 	private Button Bt_viewLabel;
 	@FXML
-	private Button Bt_cancelBooking;
+	private Button Bt_viewCourse;
 	@FXML
 	private Button Bt_bookRoom;
 
 	// Event Listener on Button[#Bt_logout].onAction
 	@FXML
 	public void f_logout(ActionEvent event) {
-		Platform.exit();
+		Main.exit();
 	}
 	// Event Listener on Button[#Bt_viewRoomBookings].onAction
 	@FXML
@@ -75,7 +75,7 @@ public class FacultyLoginController implements Initializable {
 		Parent root=null;
 		try 
 		{
-			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/CancelABooking_Faculty.fxml"));
+			root = FXMLLoader.load(LoginController.class.getResource("/application/GUIs/ViewCourses_forStudent.fxml"));
 		} 
 		catch (IOException e) 
 		{
@@ -102,7 +102,6 @@ public class FacultyLoginController implements Initializable {
 	} 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		L_greet.setText("Welcome Faculty !");
+		L_greet.setText("Welcome "+Main.u.getName()+" !");
 	}
 }

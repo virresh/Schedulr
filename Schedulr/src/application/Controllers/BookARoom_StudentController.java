@@ -105,7 +105,7 @@ public class BookARoom_StudentController implements Initializable {
 			load = "/application/GUIs/AdminPage1.fxml";
 		}
 		try {
-			root = FXMLLoader.load(ViewRoomBookingsController.class.getResource(load));
+			root = FXMLLoader.load(ViewRoomBookings_StudentController.class.getResource(load));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

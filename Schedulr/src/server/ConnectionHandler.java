@@ -126,13 +126,17 @@ public class ConnectionHandler implements Runnable {
 						User a = (User)req.x;
 						List<Slot> bk = new ArrayList<Slot>();
 						for(Slot t : ServerRunner.bookings) {
-							if(t.getType().equals(a.getEmail())) {
+							if(t.getType().equals(a.getEmail()) || a.getType().equals("Admin")) {
 								bk.add(t);
 							}
+							
 						}
 
 						for(Slot t: ServerRunner.tt.getAllSlots()) {
 							if(t.getType().equals(a.getEmail())) {
+								bk.add(t);
+							}
+							else if(a.getType().equals("Admin") && t.getSlotType().equals("ExtraSlot")) {
 								bk.add(t);
 							}
 						}
@@ -140,18 +144,30 @@ public class ConnectionHandler implements Runnable {
 					}
 					else if(req.mode.equals("CancelBooking")) {
 						Slot h = (Slot)req.x;
-						System.out.println(h.getType());
-						System.out.println(ServerRunner.bookings.size());
 						try {
 							ServerRunner.tt.removeSlot((ExtraSlot) h);
 							ServerRunner.bookings.remove(h);
-							System.out.println("Deleting Slot");
 							System.out.println(ServerRunner.bookings.contains(h));
 						}catch(Exception ex) {
 							ex.printStackTrace();
 						}
-						System.out.println(ServerRunner.bookings.size());
 						ServerRunner.saveToDisk();
+					}
+					else if(req.mode.equals("AcceptBooking")) {
+						ExtraSlot k = (ExtraSlot)req.x;
+						String p = ServerRunner.tt.hasClash(k);
+						if(p != null) {
+							response = new RequestObj("Acknowleged",p);
+						}
+						else {
+							ServerRunner.bookings.remove(k);
+							ServerRunner.tt.addSlot(k.getDay(), k);
+							ServerRunner.saveToDisk();
+							response = new RequestObj("Acknowleged","Success");
+						}
+					}
+					else if(req.mode.equals("GetRequests")) {
+						response = new RequestObj("Acknowleged",ServerRunner.bookings);
 					}
 					else if(req.mode.equals("End")) {
 

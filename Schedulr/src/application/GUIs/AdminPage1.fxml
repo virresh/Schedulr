@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="VB_Holder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.AdminPage1Controller">
+<VBox fx:id="VB_Holder" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.AdminPage1Controller">
    <children>
       <Label alignment="CENTER" prefHeight="16.0" prefWidth="706.0" text="Admin Login">
          <padding>
@@ -39,7 +39,7 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Bt_CancelBooking" mnemonicParsing="false" onAction="#f_cancelBooking" prefHeight="100.0" prefWidth="156.0" text="Cancel a Booking">
+            <Button fx:id="Bt_CancelBooking" mnemonicParsing="false" onAction="#f_cancelBooking" prefHeight="100.0" prefWidth="156.0" text="Cancel a Booking" visible="false">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
@@ -70,4 +70,7 @@
          </padding>
       </HBox>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" />
+   </padding>
 </VBox>

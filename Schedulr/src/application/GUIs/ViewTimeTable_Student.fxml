@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="V_backBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ViewTimeTable_StudentController">
+<VBox fx:id="V_backBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="/application/CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ViewTimeTable_StudentController">
    <children>
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="Bt_back" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
-            <Label alignment="CENTER" prefHeight="16.0" prefWidth="626.0" styleClass="heading" stylesheets="@../CSS/buttonIm.css" text="View TimeTable">
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="626.0" styleClass="heading" stylesheets="/application/CSS/buttonIm.css" text="View TimeTable">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

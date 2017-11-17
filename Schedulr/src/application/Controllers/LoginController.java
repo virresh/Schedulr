@@ -51,13 +51,13 @@ public class LoginController{
 					L_Status.setText("Login Succeeded");
 					String LoadFile = null;
 					if(Main.u.getType().equals("Student")) {
-						LoadFile = "../GUIs/StudentLogin.fxml";
+						LoadFile = "/application/GUIs/StudentLogin.fxml";
 					}
 					else if(Main.u.getType().equals("Faculty")) {
 						LoadFile = "/application/GUIs/FacultyLogin.fxml";
 					}
 					else {
-						LoadFile = "../GUIs/AdminPage1.fxml";
+						LoadFile = "/application/GUIs/AdminPage1.fxml";
 					}
 					Stage stageTheLabelBelongs = (Stage) L_Status.getScene().getWindow();
 				    Parent root=null;

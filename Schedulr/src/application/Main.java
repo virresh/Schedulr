@@ -43,13 +43,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
+			Parent root = FXMLLoader.load(Main.class.getResource("/application/GUIs/Login.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Schedulr");
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
 			primaryStage.centerOnScreen();
-			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("./Images/Schedulr.png")));
+			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/application/Images/Schedulr.png")));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

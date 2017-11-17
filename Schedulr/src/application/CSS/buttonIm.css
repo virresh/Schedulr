@@ -1,18 +1,18 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .course {          
-    -fx-graphic: url('../Images/Courses.png');
+    -fx-graphic: url('/application/Images/Courses.png');
 }
 .room {          
-    -fx-graphic: url('../Images/room.jpg'); 
+    -fx-graphic: url('/application/Images/room.jpg'); 
 }
 .timetable {          
-    -fx-graphic: url('../Images/Timetable.png'); 
+    -fx-graphic: url('/application/Images/Timetable.png'); 
 }
 .viewBookings {          
-    -fx-graphic: url('../Images/ViewBookings.png'); 
+    -fx-graphic: url('/application/Images/ViewBookings.png'); 
 }
 .request {          
-    -fx-graphic: url('../Images/Request.png'); 
+    -fx-graphic: url('/application/Images/Request.png'); 
 }
 
 

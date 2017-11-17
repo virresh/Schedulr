@@ -53,7 +53,7 @@ public class RespondtoRequestsController implements Initializable{
 		ExtraSlot p = (ExtraSlot)v;
 		Parent root = null;
 		FXMLLoader loader = null;
-		loader = new FXMLLoader(getClass().getResource("../GUIs/BookARoom_Student.fxml"));
+		loader = new FXMLLoader(getClass().getResource("/application/GUIs/BookARoom_Student.fxml"));
 		try {
 			root = loader.load();
 		} catch (IOException e) {

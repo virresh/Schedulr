@@ -16,19 +16,36 @@ import database.Slot;
 import database.User;
 
 /**
- *This class will serve a single client and process it's requests and send appropriate replies.
+ * 
+ * This class will serve a single client and process it's requests and send appropriate replies.
  * @author Baani Leen and Viresh Gupta
  *
  */
 
 public class ConnectionHandler implements Runnable {
 
+	/**
+	 * Socket on which client is listening
+	 */
 	Socket connection;
+	/**
+	 * Output stream on which Client listens
+	 */
 	ObjectOutputStream out=null;
+	/**
+	 * Input Stream on which Server listens
+	 */
 	ObjectInputStream in = null;
 
+	/**
+	 * Lock for preventing clashes.
+	 */
 	static ReentrantLock lock = new ReentrantLock() ;
-
+	
+	/**
+	 * Create a custom servicing class to service requests from a single client over a single socket
+	 * @param s The socket on which the client is available
+	 */
 	ConnectionHandler(Socket s){
 		connection = s;
 		try {
@@ -44,8 +61,29 @@ public class ConnectionHandler implements Runnable {
 
 	/**
 	 * This method will process the request from a client.
-	 * @param req
-	 * @return
+	 * <b>This method is thread safe and uses ReEntrant TryLock to prevent corruption </b>
+	 * 
+	 * API endpoints supported:
+	 * 
+	 * <ul>
+	 * <li> Timetable			:Return Timetable object
+	 * <li> CourseAll			:Return all the courses
+	 * <li> UserGet				:Deprecated, only in use by internal components, not exposed to user
+	 * <li> UserPut				:Deprecated
+	 * <li> CourseAddDrop		:Toggle Registration/Deregistration for a user
+	 * <li> Login				:Authenticate a user and log them in
+	 * <li> Signup				:SignUp a user
+	 * <li> AuditRoomRequest	:Save the slot without questions into bookings
+	 * <li> RoomBookRequest		:Request for a room booking or book instantly depending on usertype
+	 * <li> GetBookings			:Return all bookings made by this user
+	 * <li> CancelBooking		:Cancel a booking
+	 * <li> AcceptBooking		:Accept a booking
+	 * <li> GetRequests			:Get all <b>bookings</b> only
+	 * <li> End					:Terminate connection
+	 * </ul>
+	 * 
+	 * @param req The request recieved from the client as a RequestObj
+	 * @return Returns a RequestObj containing appropriate response depending on the Query
 	 */
 	RequestObj doStuff(RequestObj req) {
 		RequestObj response = null;

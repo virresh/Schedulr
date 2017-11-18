@@ -20,8 +20,8 @@ public class CReader{
 	
 	/**
 	 * Helper function to return time
-	 * @param alpha
-	 * @return
+	 * @param alpha String to be converted into time
+	 * @return integer representing time in 24hr Format
 	 */
 	static int getTime(String alpha) {
 		return Integer.parseInt(alpha.split(":")[0]+alpha.split(":")[1]); 

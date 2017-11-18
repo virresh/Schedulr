@@ -22,7 +22,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * 
+ * <h1>Schedulr Client</h1>
  * This is the client code for running up the GUI system.
  * This class is the main Component servicing the Client Side.
  * This class will be responsible for rendering and handling events on the client side.
@@ -32,14 +32,35 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	/**
+	 * TimeTable object to store the timetable in RAM.
+	 */
 	public static volatile TimeTable tt;
 	
+	/**
+	 * User object to determine the current user in our client.
+	 */
 	public static volatile User u;
 	
+	/**
+	 * Socket object to hold communication with Server
+	 */
 	static volatile Socket server;
+	
+	/**
+	 * Output stream connected through Socket, acts to send commands to server.
+	 */
 	static volatile ObjectOutputStream out;
+	
+	/**
+	 * Input stream connected through Socket, acts to get commands from server.
+	 */
 	static volatile ObjectInputStream in;
 
+	/**
+	 * Entry point for the GUI application.
+	 * Only concerned with loading/un-loading of GUI. 
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -59,8 +80,8 @@ public class Main extends Application {
 	
 	/**
 	 * Get's Time Table over the Socket
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException	When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	public static void requestTimeTable() throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("Timetable",null);
@@ -78,10 +99,10 @@ public class Main extends Application {
 	
 	/**
 	 * Request the server to book a particular room. Returns True/False depending on Accept/Rejection of Request.
-	 * @param s
-	 * @return
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @param s This is the slot that needs to be booked
+	 * @return True/False Based on whether the room request was taken into waiting queue / booked or not.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	public static boolean requestRoomBooking(ExtraSlot s) throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("RoomBookRequest",s,u);
@@ -98,6 +119,14 @@ public class Main extends Application {
 		}	
 	}
 	
+	/**
+	 * The replacement booking for an already existing slot. Can only be invoked by admin.
+	 * NOTE: Use carefully. The slot to be replaced must have already been deleted by removeBooking.()
+	 * @param s	New slot, that will be replaced.
+	 * @return True/False depending on if this new slot is in clash with existing ones.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly.
+	 */
 	public static boolean auditRoomBooking(ExtraSlot s) throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("AuditRoomRequest",s);
 		out.writeObject(r);
@@ -115,10 +144,10 @@ public class Main extends Application {
 	
 	
 	/**
-	 * Returns All the pending Requests for the Admin
-	 * @return
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * Returns All the pending Requests for the Admin.
+	 * @return List of Slots, containing un-accepted requests by students in the database.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly.
 	 */
 	public static List<Slot> getRequests() throws IOException, ClassNotFoundException{
 		if(!u.getType().equals("Admin")) {
@@ -137,9 +166,10 @@ public class Main extends Application {
 	
 	/**
 	 * Return all the bookings done by the current user
-	 * @return
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * Contains all bookings by all users if called by Admin.
+	 * @return List of Slots
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly.
 	 */
 	public static List<Slot> getBookings() throws IOException, ClassNotFoundException{
 		RequestObj r = new RequestObj("GetBookings",u);
@@ -155,8 +185,8 @@ public class Main extends Application {
 	
 	/**
 	 * Request the server to delete a booking.
-	 * @param k
-	 * @throws IOException
+	 * @param k The slot to be deleted.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
 	 */
 	public static void deleteBookings(Slot k) throws IOException {
 		RequestObj h = new RequestObj("CancelBooking",k);
@@ -166,10 +196,11 @@ public class Main extends Application {
 	
 	/**
 	 * Command from admin to accept a request.
-	 * @param k
-	 * @return
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * Once accepted, this will move from pending requests to TimeTable
+	 * @param k The slot for which to accept.
+	 * @return Returns a string indication whether clashes or succesful acceptance.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	public static String acceptBookings(Slot k) throws IOException, ClassNotFoundException {
 		RequestObj h = new RequestObj("AcceptBooking",k);
@@ -185,7 +216,7 @@ public class Main extends Application {
 	
 	/**
 	 * Deprecated Method. Only meant for use in debugging and Developing purpose.
-	 * @throws IOException
+	 * @throws IOException When Socket is closed or Object cannot be serialized
 	 */
 	public static void userPut() throws IOException {
 		RequestObj r = new RequestObj("UserPut",u);
@@ -195,8 +226,8 @@ public class Main extends Application {
 	
 	/**
 	 * Deprecated Method for updating User. Only for debugging purpose.
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	public static void updateUser() throws IOException, ClassNotFoundException {
 		RequestObj r = new RequestObj("UserGet",u);
@@ -212,11 +243,12 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Method to Register/De-register for a course for the current user. 
-	 * @param l
-	 * @return
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * Method to toggle Register/De-register for a course for the current user. 
+	 * Not availaible to Admin
+	 * @param l The course acronym for which registration/de-registration will occur.
+	 * @return String indication whether registration was success or not.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	public static String addDropCourse(String l) throws IOException, ClassNotFoundException {
 		RequestObj p = new RequestObj("CourseAddDrop",u,l);
@@ -231,9 +263,9 @@ public class Main extends Application {
 	
 	/**
 	 * Return a list of all the courses.
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @return List of Courses, same value returned regardless of user.
+	 * @throws ClassNotFoundException When object could not be read properly
+	 * @throws IOException When Socket is closed or Object cannot be serialized
 	 */
 	public static List<Course> requestCourses() throws ClassNotFoundException, IOException{
 		RequestObj r = new RequestObj("CourseAll",null);
@@ -267,10 +299,10 @@ public class Main extends Application {
 	
 	/**
 	 * This method will sign-up the user if possible, and return false otherwise
-	 * @param x
-	 * @return
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @param x The user who needs to be registered.
+	 * @return True/False depending if registration was successful or not
+	 * @throws IOException When object could not be read properly
+	 * @throws ClassNotFoundException When object could not be read properly
 	 */
 	
 	public static boolean signUp(User x) throws IOException, ClassNotFoundException {
@@ -297,9 +329,12 @@ public class Main extends Application {
 	/**
 	 * This method will authenticate whether the user is the required person or not
 	 * In case user is the person, place the user in the static user object for further use
-	 * @return
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @param email The Email Id of person to authenticate
+	 * @param pass  The password of person to authenticate
+	 * @return True/False depending if the email and password are both valid or not.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
+	 * @throws ClassNotFoundException When object could not be read properly
+	 * 
 	 */
 	public static boolean authenticate(String email, String pass) throws IOException, ClassNotFoundException {
 		String[] p = new String[2];
@@ -323,8 +358,8 @@ public class Main extends Application {
 	
 	/**
 	 * This method will initialize connections with the server and will hand-over control to the JavaFX engine
-	 * @param args
-	 * @throws IOException
+	 * @param args Not used.
+	 * @throws IOException When Socket is closed or Object cannot be serialized
 	 */
 	public static void main(String[] args) throws IOException {
 		connectAndInitialise();

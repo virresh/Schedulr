@@ -34,8 +34,8 @@ public class ServerRunner {
 	
 	/**
 	 * Load up the temporary parameters in ram for faster serving to clients.
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @throws ClassNotFoundException When Files are corrupted and cannot be read
+	 * @throws IOException	Should be taken care of manually in case this ever occurs
 	 */
 	private static void initialise() throws ClassNotFoundException, IOException {
 		ObjectInputStream I = new ObjectInputStream(new FileInputStream("./src/database/timeTable.dat"));
@@ -57,8 +57,8 @@ public class ServerRunner {
 	
 	/**
 	 * Saves the state to disk.
-	 * @throws FileNotFoundException
-	 * @throws IOException
+	 * @throws FileNotFoundException The required database files were not found.
+	 * @throws IOException Unknown hazards. Needs manual Attention.
 	 */
 	public static void saveToDisk() throws FileNotFoundException, IOException {
 		System.out.println("Saving the changes to disk.");
@@ -79,6 +79,9 @@ public class ServerRunner {
 		f.close();
 	}
 	
+	/**
+	 * This method will remove all the requests that are more than 5 days old.
+	 */
 	public static void clearOldRequests() {
 		List<Slot> h = new ArrayList<Slot>();
 		for(Slot p: bookings) {
@@ -91,6 +94,8 @@ public class ServerRunner {
 			bookings.remove(p);
 		}
 	}
+	
+	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		ServerSocket me = null;
 		try {

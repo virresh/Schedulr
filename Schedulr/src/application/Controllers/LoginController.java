@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -70,6 +71,7 @@ public class LoginController{
 				    stageTheLabelBelongs.setScene(new Scene(root));
 				    stageTheLabelBelongs.sizeToScene();
 				    stageTheLabelBelongs.centerOnScreen();
+				    Constants.sizeit(stageTheLabelBelongs);
 					return;
 				}
 			} catch (ClassNotFoundException e) {

@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -58,6 +59,7 @@ public class AdminPage1Controller implements Initializable{
 			return;
 		}
 		stageTheLabelBelongs.setScene(new Scene(root));
+		Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_ViewTimeTable].onAction
 	@FXML
@@ -76,6 +78,7 @@ public class AdminPage1Controller implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 		stageTheLabelBelongs.centerOnScreen();
+		Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_CancelBooking].onAction
 	@FXML
@@ -94,6 +97,7 @@ public class AdminPage1Controller implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 		stageTheLabelBelongs.centerOnScreen();
+		Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_BookRoom].onAction
 	@FXML
@@ -112,6 +116,7 @@ public class AdminPage1Controller implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 		stageTheLabelBelongs.centerOnScreen();
+		Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_RespondToReq].onAction
 	@FXML
@@ -130,6 +135,7 @@ public class AdminPage1Controller implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 		stageTheLabelBelongs.centerOnScreen();
+		Constants.sizeit(stageTheLabelBelongs);
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

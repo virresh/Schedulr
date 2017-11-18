@@ -82,14 +82,18 @@ public class TimeTable implements Serializable {
 		 }
 		 else if(x.getSlotType().equals("ExtraSlot")) {
 			 ExtraSlot y = (ExtraSlot)x;
+			 System.out.println("Hella");
 			 for(Slot b : hm.get(y.getDay())) {
 				 if(b.clashes(y)) {
 					 String[] venueB = b.getVenue().split(";");
 					 String[] venueY = y.getVenue().split(";");
 					 for(int i=0; i<venueB.length; i++)
 					 {
+						 System.out.println(" i - "+venueB[i]);
 						 for(int j=0; j<venueY.length; j++) {
+							 System.out.println("   j - "+venueY[j]);
 							 if(venueB[i].equals(venueY[j])){
+								 System.out.println("Has Clash");
 								 return b.getCode();
 							 }
 						 }

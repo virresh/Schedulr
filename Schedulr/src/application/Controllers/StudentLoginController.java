@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -54,6 +55,7 @@ public class StudentLoginController implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 	    stageTheLabelBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_viewTimeTable].onAction
 	@FXML
@@ -77,6 +79,7 @@ public class StudentLoginController implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 	    stageTheLabelBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheLabelBelongs);
 	}
 	// Event Listener on Button[#Bt_bookRoom].onAction
 	@FXML
@@ -96,6 +99,7 @@ public class StudentLoginController implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 	    stageTheLabelBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheLabelBelongs);
 	}
 	
 	// Event Listener on Button[#Bt_viewCourses].onAction
@@ -116,6 +120,7 @@ public class StudentLoginController implements Initializable{
 		stageTheLabelBelongs.setScene(new Scene(root));
 		stageTheLabelBelongs.sizeToScene();
 	    stageTheLabelBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheLabelBelongs);
 	}
 	
 	@Override

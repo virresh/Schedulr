@@ -153,6 +153,7 @@ public class BookARoom_StudentController implements Initializable {
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 		stageTheEventSourceNodeBelongs.centerOnScreen();
+		Constants.sizeit(stageTheEventSourceNodeBelongs);
     }
     
     private ExtraSlot makeSlot() {

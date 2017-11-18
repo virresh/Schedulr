@@ -2,13 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox style="-fx-background-color: aqua;" stylesheets="/application/CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.StudentLoginController">
+<VBox alignment="CENTER" style="-fx-background-color: aqua;" stylesheets="/application/CSS/slogin.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.StudentLoginController">
    <children>
       <VBox alignment="CENTER">
          <children>
@@ -41,16 +40,16 @@
             <Insets bottom="20.0" />
          </VBox.margin>
       </VBox>
-      <FlowPane cacheShape="false" hgap="50.0" vgap="50.0">
+      <FlowPane alignment="CENTER" cacheShape="false" hgap="50.0" vgap="50.0">
          <children>
-            <ButtonBar>
-               <buttons>
+            <HBox alignment="CENTER" spacing="50.0">
+               <children>
                   <Button fx:id="Bt_viewCourses" contentDisplay="TOP" mnemonicParsing="false" onAction="#f_viewCourses" styleClass="course" stylesheets="/application/CSS/buttonIm.css" text="View Courses" />
+                  <Button fx:id="Bt_viewRoomBookings" contentDisplay="TOP" mnemonicParsing="false" onAction="#f_viewRoomBookings" styleClass="viewBookings" stylesheets="/application/CSS/buttonIm.css" text="View Room Bookings" />
                   <Button fx:id="Bt_viewTimeTable" contentDisplay="TOP" mnemonicParsing="false" onAction="#f_viewTimeTable" styleClass="timetable" stylesheets="/application/CSS/buttonIm.css" text="View Time Table" />
                   <Button fx:id="Bt_bookRoom" contentDisplay="TOP" mnemonicParsing="false" onAction="#f_bookRoom" styleClass="room" stylesheets="/application/CSS/buttonIm.css" text="Book a Room" />
-                  <Button fx:id="Bt_viewRoomBookings" contentDisplay="TOP" mnemonicParsing="false" onAction="#f_viewRoomBookings" styleClass="viewBookings" stylesheets="/application/CSS/buttonIm.css" text="View Room Bookings" />
-               </buttons>
-            </ButtonBar>
+               </children>
+            </HBox>
          </children>
       </FlowPane>
    </children>

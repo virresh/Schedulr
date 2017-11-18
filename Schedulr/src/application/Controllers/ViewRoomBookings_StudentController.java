@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import application.Main;
+import constants.Constants;
 import database.ExtraSlot;
 import database.Slot;
 import javafx.collections.FXCollections;
@@ -69,6 +70,7 @@ public class ViewRoomBookings_StudentController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 		stageTheEventSourceNodeBelongs.centerOnScreen();
+		Constants.sizeit(stageTheEventSourceNodeBelongs);
 	}
 
 

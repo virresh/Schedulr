@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import database.Course;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,6 +72,7 @@ public class ViewCourses_forStudentController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 		stageTheEventSourceNodeBelongs.centerOnScreen();
+		Constants.sizeit(stageTheEventSourceNodeBelongs);
 	}
 	// Event Listener on Button[#Bt_Search].onAction
 	@FXML

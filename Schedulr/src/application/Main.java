@@ -51,6 +51,7 @@ public class Main extends Application {
 			primaryStage.centerOnScreen();
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/application/Images/Schedulr.png")));
 			primaryStage.show();
+			Constants.sizeit(primaryStage);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

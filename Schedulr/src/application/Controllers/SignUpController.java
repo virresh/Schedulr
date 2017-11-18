@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import database.Faculty;
 import database.Student;
 import database.User;
@@ -57,6 +58,7 @@ public class SignUpController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 	    stageTheEventSourceNodeBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheEventSourceNodeBelongs);
 	}
 	// Event Listener on Button[#Bt_submit].onAction
 	@FXML
@@ -102,6 +104,7 @@ public class SignUpController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 	    stageTheEventSourceNodeBelongs.centerOnScreen();
+	    Constants.sizeit(stageTheEventSourceNodeBelongs);
 	}
 	
 	

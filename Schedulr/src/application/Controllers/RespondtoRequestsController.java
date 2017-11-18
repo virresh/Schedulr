@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import constants.Constants;
 import database.ExtraSlot;
 import database.Slot;
 import javafx.collections.FXCollections;
@@ -96,6 +97,7 @@ public class RespondtoRequestsController implements Initializable{
 		stageTheEventSourceNodeBelongs.setScene(new Scene(root));
 		stageTheEventSourceNodeBelongs.sizeToScene();
 		stageTheEventSourceNodeBelongs.centerOnScreen();
+		Constants.sizeit(stageTheEventSourceNodeBelongs);
 	}
 	// Event Listener on Button[#Bt_accept].onAction
 	@FXML

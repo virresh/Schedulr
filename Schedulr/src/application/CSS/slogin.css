@@ -9,18 +9,18 @@
   -fx-font-family: "Arial Narrow";
   -fx-font-weight: bold;
   -fx-margin :300px;
-  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
 .combo-box {
   -fx-fill: white;
   -fx-font-family: "Arial Narrow";
-  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058); 
 }
 
 .combo-box .cell {
-  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);  
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
   -fx-text-fill: white;
 }  
 
@@ -30,19 +30,19 @@
 
 .choice-box {
   -fx-font-family: "Arial Narrow";
-  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);    
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
 }
 
 .choice-box .label {
   -fx-text-fill: white;
 }    
 
-.choice-box .context-menu { -fx-background-color: linear-gradient(#D0a2b1, #AA5008); }
+.choice-box .context-menu { -fx-background-color: linear-gradient(#61a2b1, #2A5058); }
 
 
 .text-field {
   -fx-text-fill: white;
   -fx-prompt-text-fill: derive(white,-10%);
   -fx-font-family: "Arial Narrow";
-  -fx-background-color: linear-gradient(#D0a2b1, #AA5008);      
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
 }

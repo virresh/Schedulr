@@ -19,7 +19,7 @@
             <HBox alignment="CENTER">
                <children>
                   <Button fx:id="Bt_back" mnemonicParsing="false" onAction="#f_back" text="&lt;" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="heading" stylesheets="/application/CSS/buttonIm.css" text="Book A Room">
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="heading" stylesheets="@../CSS/buttonIm.css" text="Book A Room">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -145,7 +145,7 @@
       </FlowPane>
    </children>
    <stylesheets>
-      <URL value="/application/CSS/login.css" />
-      <URL value="/application/CSS/slogin.css" />
+      <URL value="@../CSS/login.css" />
+      <URL value="@../CSS/slogin.css" />
    </stylesheets>
 </VBox>

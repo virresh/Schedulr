@@ -30,7 +30,7 @@ Supports functionality for
   </ul>
 </ul>
 
-See the complete documentation for JAVA files at ![https://virresh.github.io/Schedulr/](https://virresh.github.io/Schedulr/)
+See the complete documentation for JAVA files at https://virresh.github.io/Schedulr/
 
 <img src="Schedulr/src/application/Images/ScreenshotA.png" width="200">
 
